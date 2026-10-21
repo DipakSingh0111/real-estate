@@ -1,0 +1,39 @@
+<svg width="280" height="64" viewBox="0 0 280 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1B36B0"/>
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="10" y1="8" x2="50" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Logo Icon - Modern Abstract House -->
+  <!-- Outer rounded square background -->
+  <rect x="2" y="4" width="52" height="52" rx="14" fill="url(#logoGrad)"/>
+
+  <!-- Roof / chevron shape -->
+  <path d="M28 14 L44 26 V44 H12 V26 Z" fill="white" opacity="0.2"/>
+  <path d="M28 18 L40 28 V42 H16 V28 Z" fill="white" opacity="0.35"/>
+
+  <!-- Central house shape -->
+  <path d="M28 22 L36 28 V40 H20 V28 Z" fill="white"/>
+
+  <!-- Door -->
+  <rect x="25" y="33" width="6" height="7" rx="1" fill="url(#logoGrad)"/>
+
+  <!-- Window -->
+  <rect x="23" y="28" width="4" height="3" rx="0.8" fill="url(#logoGrad)" opacity="0.5"/>
+  <rect x="29" y="28" width="4" height="3" rx="0.8" fill="url(#logoGrad)" opacity="0.5"/>
+
+  <!-- Brand Name -->
+  <text x="64" y="30" fill="#0B1A33" font-family="'Inter', 'Poppins', 'Arial', sans-serif" font-size="22" font-weight="800" letter-spacing="0.5">Skyline</text>
+  
+  <!-- Sub text -->
+  <text x="66" y="47" fill="#1B36B0" font-family="'Inter', 'Poppins', 'Arial', sans-serif" font-size="11.5" font-weight="700" letter-spacing="5.5">REALTY</text>
+
+  <!-- Orange accent dot -->
+  <circle cx="177" cy="25" r="3.5" fill="#F97316"/>
+</svg>

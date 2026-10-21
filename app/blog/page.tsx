@@ -1,0 +1,98 @@
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { BreadcrumbHeader } from "@/components/ui/BreadcrumbHeader";
+import defaultData from "@/data/properties.json";
+
+import { BlogPost } from "@/types/estate";
+
+export const blogPosts: BlogPost[] = ((defaultData as any).blogPosts || []) as BlogPost[];
+
+export default function BlogPage() {
+  return (
+    <main className="min-h-screen bg-[#F7F4EE] text-[#171717]">
+      {/* Breadcrumb Header */}
+      <BreadcrumbHeader
+        badge="Editorial Intelligence"
+        title="Latest"
+        titleHighlight="Articles"
+        breadcrumbs={[{ label: "Blog", active: true }]}
+      />
+
+      {/* Main Blog Articles Grid */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 sm:py-16">
+        {/* Title */}
+        <div className="mb-12 pb-6 border-b border-[#E5DFD3]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#171717] tracking-tight">
+            Latest Blog & Articles
+          </h2>
+        </div>
+
+        {/* 6 Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {blogPosts.map((post) => (
+            <Link
+              key={post.id}
+              href={`/blog/${post.slug || post.id}`}
+              className="group flex flex-col bg-[#F7F4EE] border border-[#E5DFD3] hover:border-[#B8945A]/60 transition-colors duration-300"
+            >
+              {/* Image Frame with Zoom */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#171717]">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute top-4 left-4 bg-[#171717]/85 backdrop-blur-sm px-3 py-1">
+                  <span className="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#B8945A]">
+                    {post.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content Body */}
+              <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                <div>
+                  <div className="flex items-center gap-3 text-[11px] text-[#737373] tracking-wider mb-3">
+                    <span>{post.date}</span>
+                    <span className="w-1 h-1 rounded-full bg-[#B8945A]" />
+                    <span>{post.readTime}</span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-serif text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors duration-200 mb-3">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-[#737373] font-light leading-relaxed line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-[#E5DFD3] flex items-center justify-between">
+                  <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#171717] group-hover:text-[#B8945A] transition-colors">
+                    Read Article
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-[#B8945A] transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+}
