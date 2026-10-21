@@ -110,37 +110,42 @@ export const StatsSection: React.FC<StatsSectionProps> = ({
       className="relative z-20 my-6 sm:my-8 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full"
     >
       <div className="bg-[#F7F4EE] border border-[#E5DFD3] p-8 sm:p-10 shadow-[0_12px_40px_rgba(23,23,23,0.06)]">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 divide-y lg:divide-y-0 lg:divide-x divide-[#E5DFD3]">
-          {stats.map((stat: CounterStat, idx: number) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-[#E5DFD3]">
+          {stats.map((stat: CounterStat) => (
             <div
               key={stat.id}
-              className={`flex flex-col items-center text-center group ${
-                idx !== 0 ? "pt-6 lg:pt-0 lg:pl-8" : ""
-              }`}
+              className="flex flex-col items-center text-center justify-between py-6 sm:py-4 px-4 sm:px-6 h-full group"
             >
-              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#171717] flex items-baseline tracking-tight">
-                {stat.prefix && (
-                  <span className="text-[#B8945A] mr-0.5 text-2xl sm:text-3xl font-serif">
-                    {stat.prefix}
-                  </span>
-                )}
-                <span>{counts[stat.id] ?? 0}</span>
-                {stat.suffix && (
-                  <span className="text-[#B8945A] text-xl sm:text-2xl font-serif ml-1">
-                    {stat.suffix}
-                  </span>
-                )}
+              {/* Number Container with Fixed Baseline */}
+              <div className="h-16 flex items-center justify-center">
+                <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#171717] flex items-baseline tracking-tight">
+                  {stat.prefix && (
+                    <span className="text-[#B8945A] mr-0.5 text-2xl sm:text-3xl font-serif">
+                      {stat.prefix}
+                    </span>
+                  )}
+                  <span>{counts[stat.id] ?? 0}</span>
+                  {stat.suffix && (
+                    <span className="text-[#B8945A] text-xl sm:text-2xl font-serif ml-1">
+                      {stat.suffix}
+                    </span>
+                  )}
+                </div>
               </div>
 
-              <p className="mt-3 text-xs sm:text-sm font-bold text-[#171717] uppercase tracking-[0.2em]">
-                {stat.label}
-              </p>
+              {/* Title & SubLabel Container with consistent vertical spacing */}
+              <div className="flex flex-col items-center justify-center flex-1 my-2">
+                <p className="text-xs sm:text-sm font-bold text-[#171717] uppercase tracking-[0.2em] min-h-[2.5rem] flex items-center justify-center text-center">
+                  {stat.label}
+                </p>
 
-              <span className="mt-1 text-xs text-[#737373] font-light max-w-[200px] leading-relaxed">
-                {stat.subLabel}
-              </span>
+                <span className="mt-1 text-xs text-[#737373] font-light max-w-[200px] leading-relaxed min-h-[2rem] flex items-center justify-center text-center">
+                  {stat.subLabel}
+                </span>
+              </div>
 
-              <div className="w-6 h-[1.5px] bg-[#B8945A] mt-4 group-hover:w-12 transition-all duration-300" />
+              {/* Bottom Gold Indicator */}
+              <div className="w-6 h-[1.5px] bg-[#B8945A] mt-3 group-hover:w-12 transition-all duration-300" />
             </div>
           ))}
         </div>

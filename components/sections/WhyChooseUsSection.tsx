@@ -1,54 +1,54 @@
+"use client";
+
 import React from "react";
 import defaultData from "@/data/properties.json";
+import { Reveal, RevealStagger, RevealChild } from "@/components/animations/Reveal";
 
-interface PillarItem {
-  number: string;
-  title: string;
-  description: string;
-}
+export const WhyChooseUsSection: React.FC = () => {
+  const whyChooseUsData = (defaultData as any).whyChooseUs || {
+    title: "Why Choose",
+    pillars: [],
+  };
+  const luxuryPillars = whyChooseUsData.pillars || [];
 
-interface WhyChooseUsSectionProps {
-  title?: string;
-  pillars?: PillarItem[];
-}
-
-export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
-  title = (defaultData as any).whyChooseUs?.title || "Why Choose Aura Estates",
-  pillars = ((defaultData as any).whyChooseUs?.pillars || []) as PillarItem[],
-}) => {
   return (
-    <section className="py-14 sm:py-16 px-6 sm:px-8 lg:px-12 bg-[#171717] text-[#F7F4EE] border-t border-[#262626]">
+    <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE] text-[#171717] border-t border-[#E5DFD3]">
       <div className="max-w-7xl mx-auto">
-        {/* Top Header */}
-        <div className="max-w-2xl mb-16">
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.12]">
-            {title}
+        <Reveal className="mb-12 sm:mb-14 text-center sm:text-left">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#171717] tracking-tight leading-[1.08]">
+            {whyChooseUsData.title || "Why Choose"}
           </h2>
-        </div>
+        </Reveal>
 
-        {/* 4 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-          {pillars.map((pillar) => (
-            <div
-              key={pillar.number}
-              className="p-8 border border-[#262626] hover:border-[#B8945A]/50 bg-[#171717] transition-all duration-300 flex flex-col justify-between group"
+        <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          {luxuryPillars.map((item: any) => (
+            <RevealChild
+              key={item.number}
+              className="group flex flex-col justify-between"
             >
-              <div>
-                <span className="font-serif text-4xl text-[#B8945A] font-light block mb-6">
-                  {pillar.number}
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl text-[#F7F4EE] font-normal mb-3 group-hover:text-[#B8945A] transition-colors">
-                  {pillar.title}
-                </h3>
-                <p className="text-sm sm:text-base text-[#737373] leading-relaxed font-light">
-                  {pillar.description}
-                </p>
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#171717] mb-6 border border-[#E5DFD3] group-hover:border-[#B8945A]/60 shadow-[0_8px_30px_rgba(23,23,23,0.06)] transition-all">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-108"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/80 via-transparent to-transparent opacity-50 pointer-events-none" />
+
+                <div className="absolute inset-3 border border-[#B8945A]/0 group-hover:border-[#B8945A]/60 transition-all duration-700 pointer-events-none" />
               </div>
 
-              <div className="w-0 group-hover:w-12 h-[1.5px] bg-[#B8945A] transition-all duration-500 mt-8" />
-            </div>
+              <div>
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#171717] font-normal mb-2 group-hover:text-[#B8945A] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#737373] font-light leading-relaxed line-clamp-2">
+                  {item.tagline}
+                </p>
+              </div>
+            </RevealChild>
           ))}
-        </div>
+        </RevealStagger>
       </div>
     </section>
   );

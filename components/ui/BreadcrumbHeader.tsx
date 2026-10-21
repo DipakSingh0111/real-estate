@@ -31,14 +31,7 @@ export const BreadcrumbHeader: React.FC<BreadcrumbHeaderProps> = ({
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
 
-      {/* 2. Seamless Smooth Blur Mask under text - Blends continuously into clear image on right */}
-      <div
-        className="absolute inset-0 z-[1] backdrop-blur-md pointer-events-none"
-        style={{
-          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 32%, rgba(0,0,0,0) 60%)",
-          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 32%, rgba(0,0,0,0) 60%)",
-        }}
-      />
+      {/* 2. Seamless Smooth Gradient under text */}
       <div
         className="absolute inset-0 z-[1] bg-gradient-to-r from-[#171717] via-[#171717]/80 to-transparent pointer-events-none"
         style={{

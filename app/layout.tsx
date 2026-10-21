@@ -17,6 +17,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className="h-full antialiased selection:bg-[#B8945A]/20 selection:text-[#171717]"
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#F7F4EE] text-[#171717] font-sans">
         <Suspense fallback={null}>
           <Navbar />

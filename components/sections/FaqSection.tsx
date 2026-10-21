@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import defaultData from "@/data/properties.json";
+import { Reveal } from "@/components/animations/Reveal";
 
 interface FaqItem {
   id: string;
@@ -26,17 +27,18 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
   };
 
   return (
-    <section id="faq" className="relative bg-[#F7F4EE] py-14 sm:py-16 border-t border-[#E5DFD3]">
+    <section id="faq" className="relative bg-[#F7F4EE] py-16 sm:py-20 border-t border-[#E5DFD3]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="mb-12 sm:mb-16">
+        <Reveal className="mb-12 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal tracking-tight whitespace-nowrap">
             {title}
           </h2>
-        </div>
+        </Reveal>
 
         {/* FAQ Accordion */}
-        <div className="divide-y divide-[#E5DFD3] border-y border-[#E5DFD3]">
+        <Reveal yOffset={40} delay={0.15}>
+          <div className="divide-y divide-[#E5DFD3] border-y border-[#E5DFD3]">
           {faqs.map((faq: FaqItem, index: number) => {
             const isOpen = openId === faq.id;
             const itemNumber = String(index + 1).padStart(2, "0");
@@ -106,6 +108,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
             );
           })}
         </div>
+        </Reveal>
       </div>
     </section>
   );

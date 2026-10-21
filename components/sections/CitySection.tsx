@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import defaultData from "@/data/properties.json";
 import { CitySectionData } from "@/types/estate";
 
@@ -9,130 +10,134 @@ interface CitySectionProps {
   data?: CitySectionData;
 }
 
+interface CityCardProps {
+  city: any;
+  index: number;
+  total: number;
+  badge?: string;
+  defaultCollection?: string;
+  ctaText?: string;
+}
+
+const CityCardItem: React.FC<CityCardProps> = ({
+  city,
+  index,
+  total,
+  badge = "DESTINATION",
+  defaultCollection = "Metropolitan Collection",
+  ctaText = "Explore Estates",
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cityQuery = city.slug || encodeURIComponent(city.name);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "start start"],
+  });
+
+  // Smooth entry and stacking scale
+  const scale = useTransform(scrollYProgress, [0, 1], [0.93, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 0.9, 1]);
+
+  const topOffset = 100 + index * 26; // Luxury layered overlap stack
+
+  return (
+    <div
+      ref={containerRef}
+      className="sticky"
+      style={{
+        top: `${topOffset}px`,
+        zIndex: index + 1,
+      }}
+    >
+      <motion.div
+        style={{ scale, opacity }}
+        className="w-full origin-top"
+      >
+        <Link
+          href={`/listings?city=${cityQuery}`}
+          className="group block relative w-full aspect-[16/10] sm:aspect-[21/9] min-h-[380px] sm:min-h-[480px] lg:min-h-[520px] overflow-hidden border border-[#E5DFD3] shadow-[0_24px_60px_rgba(23,23,23,0.22)] bg-[#171717] cursor-pointer rounded-sm"
+        >
+          {/* Full High-Resolution City Image */}
+          <img
+            src={city.image}
+            alt={city.name}
+            className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-108"
+            loading="lazy"
+          />
+
+          {/* Cinematic Overlap Gradients & Glass Border */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/95 via-[#171717]/40 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#171717]/85 via-[#171717]/30 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
+
+          {/* Top Badge: City Sequence & Index */}
+          <div className="absolute top-6 sm:top-8 left-6 sm:left-10 z-10 flex items-center gap-3">
+            <span className="font-serif text-lg sm:text-2xl text-[#B8945A] font-light">
+              0{index + 1}
+            </span>
+            <span className="w-8 h-[1px] bg-[#B8945A]/70" />
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#F7F4EE]/90 font-medium bg-[#171717]/60 backdrop-blur-md px-2.5 py-1 border border-white/10">
+              {badge}
+            </span>
+          </div>
+
+          {/* Bottom Content Bar */}
+          <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-10 right-6 sm:right-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 z-10">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.25em] text-[#B8945A] font-semibold block mb-2">
+                {city.collection || defaultCollection}
+              </span>
+              <h3 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-normal group-hover:text-[#B8945A] transition-colors leading-tight">
+                {city.name}
+              </h3>
+            </div>
+
+            <div className="inline-flex items-center gap-3 px-7 sm:px-9 py-3.5 bg-[#B8945A] group-hover:bg-[#9E7D46] text-[#F7F4EE] text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 shadow-2xl group-hover:translate-x-1 shrink-0">
+              <span>{ctaText}</span>
+              <span>→</span>
+            </div>
+          </div>
+        </Link>
+      </motion.div>
+    </div>
+  );
+};
+
 export const CitySection: React.FC<CitySectionProps> = ({
   data = defaultData.citySection,
 }) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const checkScroll = () => {
-    if (!scrollContainerRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-    setCanScrollLeft(scrollLeft > 20);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 20);
-  };
-
-  useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    checkScroll();
-    el.addEventListener("scroll", checkScroll, { passive: true });
-    return () => el.removeEventListener("scroll", checkScroll);
-  }, []);
-
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollContainerRef.current) return;
-    const containerWidth = scrollContainerRef.current.clientWidth;
-    const scrollAmount = direction === "left" ? -containerWidth * 0.75 : containerWidth * 0.75;
-    scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    const interval = setInterval(() => {
-      if (!scrollContainerRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-      if (scrollLeft + clientWidth >= scrollWidth - 20) {
-        scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        const cardWidth = scrollContainerRef.current.firstElementChild?.clientWidth || 300;
-        scrollContainerRef.current.scrollBy({ left: cardWidth + 20, behavior: "smooth" });
-      }
-    }, 4500);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  const cities = data.cities || [];
 
   return (
-    <section id="cities" className="relative bg-[#F7F4EE] py-14 sm:py-16 px-6 sm:px-8 lg:px-12 border-t border-[#E5DFD3] overflow-hidden">
-      <div className="relative max-w-7xl mx-auto">
-        <div className="relative mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-          <div>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#171717] tracking-tight">
-              Explore by City
-            </h2>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => scroll("left")}
-              disabled={!canScrollLeft}
-              aria-label="Previous City"
-              className={`w-11 h-11 border border-[#E5DFD3] flex items-center justify-center transition-all ${
-                canScrollLeft
-                  ? "bg-[#F7F4EE] text-[#171717] hover:border-[#B8945A] hover:text-[#B8945A] cursor-pointer"
-                  : "border-[#E5DFD3]/40 text-[#737373]/30 cursor-not-allowed"
-              }`}
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll("right")}
-              disabled={!canScrollRight}
-              aria-label="Next City"
-              className={`w-11 h-11 border border-[#E5DFD3] flex items-center justify-center transition-all ${
-                canScrollRight
-                  ? "bg-[#F7F4EE] text-[#171717] hover:border-[#B8945A] hover:text-[#B8945A] cursor-pointer"
-                  : "border-[#E5DFD3]/40 text-[#737373]/30 cursor-not-allowed"
-              }`}
-            >
-              →
-            </button>
-          </div>
+    <section id="cities" className="relative bg-[#F7F4EE] py-16 sm:py-20 px-6 sm:px-8 lg:px-12 border-t border-[#E5DFD3]">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <span className="text-[11px] uppercase tracking-[0.3em] font-semibold text-[#B8945A] block mb-3">
+            {data.badge || "PRIME GLOBAL ENCLAVES"}
+          </span>
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#171717] tracking-tight">
+            {data.title || "Explore by City"}
+          </h2>
         </div>
 
-        <div
-          ref={scrollContainerRef}
-          onMouseEnter={() => setIsAutoPlaying(false)}
-          onMouseLeave={() => setIsAutoPlaying(true)}
-          className="flex gap-6 overflow-x-auto scroll-smooth pb-4 no-scrollbar snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {data.cities.map((city) => {
-            const cityQuery = city.slug || encodeURIComponent(city.name);
-            return (
-              <Link
-                key={city.id}
-                href={`/listings?city=${cityQuery}`}
-                className="snap-start shrink-0 w-full sm:w-[280px] lg:w-[300px] group overflow-hidden bg-[#171717] border border-[#E5DFD3] hover:border-[#B8945A] transition-all duration-300 block cursor-pointer"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <img
-                    src={city.image}
-                    alt={city.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-transparent to-transparent" />
-
-                  <div className="absolute bottom-6 left-6 right-6 text-[#F7F4EE]">
-                    <h3 className="font-serif text-2xl font-normal group-hover:text-[#B8945A] transition-colors">
-                      {city.name}
-                    </h3>
-                    <span className="text-xs uppercase tracking-[0.2em] text-[#B8945A] mt-1 block font-semibold flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
-                      Explore Estates →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+        {/* Animated Overlapping Cards Container */}
+        <div className="relative pb-16 space-y-12 sm:space-y-16">
+          {cities.map((city, index) => (
+            <CityCardItem
+              key={city.id || index}
+              city={city}
+              index={index}
+              total={cities.length}
+              badge={(data as any).cardBadge}
+              defaultCollection={(data as any).cardCollection}
+              ctaText={(data as any).ctaText}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 };
+

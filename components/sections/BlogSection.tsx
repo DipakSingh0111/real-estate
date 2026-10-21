@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import defaultData from "@/data/properties.json";
+import { Reveal } from "@/components/animations/Reveal";
 
 interface BlogPost {
   id: string;
@@ -23,141 +24,135 @@ interface BlogSectionProps {
 export const BlogSection: React.FC<BlogSectionProps> = ({
   posts = (defaultData as any).blogPosts?.slice(0, 3) || [],
 }) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkScroll = () => {
-    if (!scrollContainerRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-    setCanScrollLeft(scrollLeft > 10);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-  };
-
-  useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    checkScroll();
-    el.addEventListener("scroll", checkScroll, { passive: true });
-    return () => el.removeEventListener("scroll", checkScroll);
-  }, [posts]);
-
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollContainerRef.current) return;
-    const clientWidth = scrollContainerRef.current.clientWidth;
-    const scrollAmount = direction === "left" ? -clientWidth : clientWidth;
-    scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  };
+  const featuredPost = posts[0];
+  const secondaryPosts = posts.slice(1, 3);
 
   return (
-    <section id="journal" className="relative bg-[#F7F4EE] py-14 sm:py-16 border-t border-[#E5DFD3]">
+    <section id="journal" className="relative bg-[#F7F4EE] py-16 sm:py-20 border-t border-[#E5DFD3]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header with Navigation */}
-        <div className="mb-10 sm:mb-16 flex items-end justify-between gap-4">
+        {/* Editorial Section Header */}
+        <Reveal className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-14 pb-6 border-b border-[#E5DFD3] gap-4">
           <div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#171717] font-normal tracking-tight">
-              Latest Blog & Articles
+            <span className="text-[11px] uppercase tracking-[0.3em] font-semibold text-[#B8945A] block mb-2">
+              The Journal
+            </span>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-[#171717] font-normal tracking-tight">
+              Perspectives & Insights
             </h2>
           </div>
+          <Link
+            href="/blog"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-[#171717] hover:text-[#B8945A] transition-colors flex items-center gap-2 group cursor-pointer"
+          >
+            <span>View All Articles</span>
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </Link>
+        </Reveal>
 
-          {/* Navigation Arrows for Mobile Slide */}
-          <div className="flex md:hidden items-center gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={() => scroll("left")}
-              disabled={!canScrollLeft}
-              aria-label="Previous Article"
-              className={`w-10 h-10 border border-[#E5DFD3] flex items-center justify-center transition-all ${
-                canScrollLeft
-                  ? "bg-[#F7F4EE] text-[#171717] hover:border-[#B8945A] hover:text-[#B8945A] cursor-pointer"
-                  : "border-[#E5DFD3]/40 text-[#737373]/30 cursor-not-allowed"
-              }`}
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll("right")}
-              disabled={!canScrollRight}
-              aria-label="Next Article"
-              className={`w-10 h-10 border border-[#E5DFD3] flex items-center justify-center transition-all ${
-                canScrollRight
-                  ? "bg-[#F7F4EE] text-[#171717] hover:border-[#B8945A] hover:text-[#B8945A] cursor-pointer"
-                  : "border-[#E5DFD3]/40 text-[#737373]/30 cursor-not-allowed"
-              }`}
-            >
-              →
-            </button>
-          </div>
-        </div>
-
-        {/* Blog Container: Smooth 1-Card Snap Slide on Mobile, 3-Column Grid on Tablet/Desktop */}
-        <div
-          ref={scrollContainerRef}
-          className="flex md:grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory no-scrollbar"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {posts.map((post: BlogPost) => (
+        {/* Asymmetrical High-Fashion Magazine Layout: 7/12 Featured + 5/12 Stack */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+          {/* Main Featured Cover Story (Left) */}
+          {featuredPost && (
+            <Reveal className="lg:col-span-7 flex flex-col" yOffset={40} delay={0.1}>
             <Link
-              key={post.id}
-              href={`/blog/${post.slug || post.id}`}
-              className="snap-start shrink-0 w-full md:w-auto group flex flex-col bg-[#F7F4EE] border border-[#E5DFD3] hover:border-[#B8945A]/60 transition-colors duration-300"
+              href={`/blog/${featuredPost.slug || featuredPost.id}`}
+              className="group flex flex-col justify-between h-full bg-white border border-[#E5DFD3] hover:border-[#B8945A]/60 shadow-[0_12px_40px_rgba(23,23,23,0.04)] transition-all duration-500 overflow-hidden cursor-pointer"
             >
-              {/* Image Frame with Zoom */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#171717]">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-[#171717]">
                 <Image
-                  src={post.image}
-                  alt={post.title}
+                  src={featuredPost.image}
+                  alt={featuredPost.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4 bg-[#171717]/85 backdrop-blur-sm px-3 py-1">
-                  <span className="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#B8945A]">
-                    {post.category}
-                  </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/70 via-transparent to-transparent opacity-60" />
+
+                <div className="absolute top-5 left-5 bg-[#171717] text-[#B8945A] text-[10px] uppercase tracking-[0.2em] font-semibold px-3.5 py-1.5 border border-[#B8945A]/30">
+                  Featured Cover
                 </div>
               </div>
 
-              {/* Content Body */}
-              <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+              <div className="p-7 sm:p-8 flex flex-col flex-1 justify-between">
                 <div>
-                  <div className="flex items-center gap-3 text-[11px] text-[#737373] tracking-wider mb-3">
-                    <span>{post.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-[#B8945A]" />
-                    <span>{post.readTime}</span>
+                  <div className="flex items-center gap-2.5 text-[11px] text-[#737373] tracking-widest uppercase mb-2.5">
+                    <span className="text-[#B8945A] font-semibold">{featuredPost.category}</span>
+                    <span>•</span>
+                    <span>{featuredPost.date}</span>
+                    <span>•</span>
+                    <span>{featuredPost.readTime}</span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-serif text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors duration-200 mb-3">
-                    {post.title}
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors mb-3">
+                    {featuredPost.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#737373] font-light leading-relaxed line-clamp-3">
-                    {post.excerpt}
+                  <p className="text-sm text-[#737373] font-light leading-relaxed line-clamp-3">
+                    {featuredPost.excerpt}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-[#E5DFD3] flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#171717] group-hover:text-[#B8945A] transition-colors">
-                    Explore Article
+                <div className="pt-5 mt-6 border-t border-[#E5DFD3] flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#171717] group-hover:text-[#B8945A] transition-colors">
+                    Read Full Feature
                   </span>
-                  <svg
-                    className="w-4 h-4 text-[#B8945A] transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                  <span className="text-[#B8945A] text-lg transition-transform duration-300 group-hover:translate-x-1.5">
+                    →
+                  </span>
                 </div>
               </div>
             </Link>
-          ))}
+            </Reveal>
+          )}
+
+          {/* Secondary Stacked Editorial Stories (Right) */}
+          <Reveal className="lg:col-span-5 flex flex-col justify-between gap-6 sm:gap-8" yOffset={40} delay={0.25}>
+            {secondaryPosts.map((post: BlogPost, idx: number) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.slug || post.id}`}
+                className="group flex-1 bg-white border border-[#E5DFD3] hover:border-[#B8945A]/60 shadow-[0_8px_30px_rgba(23,23,23,0.03)] transition-all duration-300 overflow-hidden flex flex-col justify-between cursor-pointer"
+              >
+                {/* Prominent High-Resolution Image Header */}
+                <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-[#171717]">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-[#171717]/85 backdrop-blur-sm px-2.5 py-1 border border-[#B8945A]/30">
+                    <span className="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#B8945A]">
+                      0{idx + 2} • {post.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Text Body */}
+                <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
+                  <div>
+                    <h4 className="font-serif text-xl sm:text-2xl text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors mb-2">
+                      {post.title}
+                    </h4>
+
+                    <span className="text-[11px] text-[#737373] tracking-wide block font-light">
+                      {post.date} · {post.readTime}
+                    </span>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-[#E5DFD3] flex items-center justify-between">
+                    <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#171717] group-hover:text-[#B8945A] transition-colors">
+                      Read Story
+                    </span>
+                    <span className="text-[#B8945A] text-sm transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </Reveal>
         </div>
       </div>
     </section>

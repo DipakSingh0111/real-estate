@@ -7,9 +7,10 @@
     "breadcrumbBackgroundImage": "/images/hero-banner.png",
     "navLinks": [
       { "name": "Home", "href": "/", "active": true },
+      { "name": "About", "href": "/about" },
       { "name": "Listings", "href": "/listings" },
-      { "name": "Projects", "href": "/projects" },
       { "name": "Services", "href": "/services" },
+      { "name": "Faq's", "href": "/faq" },
       { "name": "Blog", "href": "/blog" }
     ],
     "ctaButton": {
@@ -1061,199 +1062,51 @@
         "status": "For Sale",
         "areaSqFt": 4900,
         "description": "Immersed in Goa's idyllic hinterlands with serene backwater channels, bird sanctuaries, and organic culinary gardens."
-      },
-      {
-        "id": "kol-1",
-        "title": "Alipore Heritage Colonial Mansion",
-        "price": "₹55.0 Cr",
-        "location": "Alipore, South Kolkata",
-        "city": "Kolkata",
-        "beds": 6,
-        "baths": 7,
-        "features": [
-          "6 Beds",
-          "7 Baths",
-          "Sprawling Lawns",
-          "Grand Banquet Salon"
-        ],
-        "image": "/images/real-estate-07.jpg",
-        "tag": "Aristocratic South Kolkata",
-        "type": "Colonial Heritage Mansion",
-        "status": "For Sale",
-        "areaSqFt": 13000,
-        "description": "Set in Kolkata's wealthiest heritage quarter, boasting Corinthian columns, grand ballrooms, and 1.2 acres of private grounds."
-      },
-      {
-        "id": "kol-2",
-        "title": "Ballygunge Circular Road Sky Villa",
-        "price": "₹32.0 Cr",
-        "location": "Ballygunge Circular Road, Kolkata",
-        "city": "Kolkata",
-        "beds": 5,
-        "baths": 6,
-        "features": ["5 Beds", "6 Baths", "Private Elevator", "Sunset Skyline"],
-        "image": "/images/real-estate-08.jpg",
-        "tag": "Ballygunge Aristocracy",
-        "type": "Duplex Sky Residence",
-        "status": "For Sale",
-        "areaSqFt": 7600,
-        "description": "A prestigious high-rise duplex offering customized Italian marble, private indoor plunge pool, and clubhouse membership."
-      },
-      {
-        "id": "kol-3",
-        "title": "The 42 Cloud Mansion",
-        "price": "₹45.0 Cr",
-        "location": "Chowringhee, Central Kolkata",
-        "city": "Kolkata",
-        "beds": 5,
-        "baths": 6,
-        "features": [
-          "5 Beds",
-          "6 Baths",
-          "Victoria Memorial Views",
-          "Sky Lounge"
-        ],
-        "image": "/images/real-estate-09.jpg",
-        "tag": "Iconic Skyscraper",
-        "type": "Ultra-Luxury Penthouse",
-        "status": "For Sale",
-        "areaSqFt": 8200,
-        "description": "Soaring above the city on Kolkata's tallest tower, commanding breathtaking 360-degree vistas over the Victoria Memorial and Maidan."
-      },
-      {
-        "id": "kol-4",
-        "title": "Rawdon Street Regal Residence",
-        "price": "₹28.0 Cr",
-        "location": "Rawdon Street, Central Kolkata",
-        "city": "Kolkata",
-        "beds": 4,
-        "baths": 5,
-        "features": [
-          "4 Beds",
-          "5 Baths",
-          "Private Terrace",
-          "Modernist Design"
-        ],
-        "image": "/images/real-estate-10.jpg",
-        "tag": "Park Street Quarter",
-        "type": "Boutique Luxury Flat",
-        "status": "For Sale",
-        "areaSqFt": 5800,
-        "description": "Minutes away from Park Street, offering understated contemporary luxury, dedicated security, and private underground parking."
-      },
-      {
-        "id": "kol-5",
-        "title": "EM Bypass Waterfront Lake Penthouse",
-        "price": "₹21.5 Cr",
-        "location": "EM Bypass, Kolkata",
-        "city": "Kolkata",
-        "beds": 4,
-        "baths": 4,
-        "features": [
-          "4 Beds",
-          "4 Baths",
-          "East Lake Views",
-          "Clubhouse Amenities"
-        ],
-        "image": "/images/real-estate-11.jpg",
-        "tag": "Lake Panorama",
-        "type": "Waterfront Penthouse",
-        "status": "For Sale",
-        "areaSqFt": 6200,
-        "description": "Overlooking the vast wetlands and water bodies of East Kolkata, featuring rooftop glass deck and 5-star spa amenities."
-      },
-      {
-        "id": "kol-6",
-        "title": "New Town Eco Parkside Villa",
-        "price": "₹15.8 Cr",
-        "location": "Action Area II, New Town, Kolkata",
-        "city": "Kolkata",
-        "beds": 4,
-        "baths": 4,
-        "features": ["4 Beds", "4 Baths", "Facing Eco Park", "Private Lawn"],
-        "image": "/images/real-estate-12.jpg",
-        "tag": "New Town Greens",
-        "type": "Contemporary Eco Villa",
-        "status": "For Sale",
-        "areaSqFt": 5100,
-        "description": "Front-row location facing Eco Park's sprawling lake and green trails, tailored for executive luxury living."
       }
     ]
   },
-  "stats": [
-    {
-      "id": "1",
-      "prefix": "₹",
-      "value": 4850,
-      "suffix": "+ Cr",
-      "label": "Properties Handled",
-      "subLabel": "Total asset value advised"
-    },
-    {
-      "id": "2",
-      "prefix": "",
-      "value": 1250,
-      "suffix": "+",
-      "label": "Ultra-HNI Families",
-      "subLabel": "Discreet acquisitions closed"
-    },
-    {
-      "id": "3",
-      "prefix": "",
-      "value": 99,
-      "suffix": ".4%",
-      "label": "Satisfaction Rate",
-      "subLabel": "Verified client feedback"
-    },
-    {
-      "id": "4",
-      "prefix": "",
-      "value": 6,
-      "suffix": " Enclaves",
-      "label": "Prime Metropolitan Hubs",
-      "subLabel": "Mumbai, Delhi, Bangalore, Goa & more"
-    }
-  ],
   "citySection": {
     "badge": "Prime Indian Cities",
-    "title": "Explore Exclusive Estates by City",
+    "title": "Explore by City",
     "subtitle": "Discover luxury residences, penthouses, and bespoke villas across India's most prestigious metropolitan hubs.",
+    "cardBadge": "DESTINATION",
+    "cardCollection": "Metropolitan Collection",
+    "ctaText": "Explore Estates",
     "cities": [
       {
         "id": "city-1",
         "name": "Mumbai",
         "slug": "mumbai",
+        "collection": "Coastal Penthouses & Sea Mansions",
         "image": "/images/night-city-skyline.jpg"
       },
       {
         "id": "city-2",
         "name": "Delhi NCR",
         "slug": "delhi-ncr",
+        "collection": "Lutyens Bungalows & Golf Mansions",
         "image": "/images/day-city-view.jpg"
       },
       {
         "id": "city-3",
         "name": "Bangalore",
         "slug": "bangalore",
+        "collection": "Modernist Eco-Villas & Tech Penthouses",
         "image": "/images/modern-buildings.jpg"
       },
       {
         "id": "city-4",
         "name": "Hyderabad",
         "slug": "hyderabad",
+        "collection": "Jubilee Hills Estates & Sky Mansions",
         "image": "/images/real-estate-06.jpg"
       },
       {
         "id": "city-5",
         "name": "Goa",
         "slug": "goa",
+        "collection": "Heritage Portuguese Villas & Shoreline Retreats",
         "image": "/images/real-estate-01.jpg"
-      },
-      {
-        "id": "city-6",
-        "name": "Kolkata",
-        "slug": "kolkata",
-        "image": "/images/real-estate-07.jpg"
       }
     ]
   },
@@ -1304,393 +1157,60 @@
       }
     ]
   },
-  "latestProjects": {
-    "badge": "Newly Unveiled",
-    "title": "Latest Iconic Developments",
-    "subtitle": "Discover our newest luxury developments, landmark sky towers, and private golf estates crafted by international architects.",
-    "projects": [
-      {
-        "id": "proj-1",
-        "slug": "the-imperial-sky-terraces",
-        "title": "The Imperial Sky Terraces",
-        "developer": "Aura Signature Collection",
-        "location": "Worli, Mumbai",
-        "status": "Ready Possession",
-        "units": "4 & 5 BHK Sky Mansions",
-        "startingPrice": "₹3.80 Cr",
-        "completionYear": "2024",
-        "totalTowers": "2 Iconic Towers",
-        "totalUnits": "48 Exclusive Residences",
-        "architect": "Foster & Partners Inspired",
-        "image": "/images/real-estate-05.jpg",
-        "description": "Rising commandingly above Mumbai's Arabian Sea coastline in prestigious Worli, The Imperial Sky Terraces represents the pinnacle of elevated coastal urban luxury. Each double-height cantilevered penthouse features floor-to-ceiling acoustic glass, private infinity dip pools, and panoramic uninterrupted ocean horizon vistas.",
-        "highlights": [
-          "Private sky lounge with temperature-controlled lap pool",
-          "Dedicated rooftop private helipad with nautical approach clearance",
-          "White-glove 24/7 St. Regis style butler and lifestyle concierge",
-          "Automated biometric private elevator direct to residence foyer",
-          "Acoustically engineered 16-seat Dolby Atmos screening room"
-        ],
-        "gallery": [
-          "/images/real-estate-05.jpg",
-          "/images/real-estate-06.jpg",
-          "/images/real-estate-07.jpg",
-          "/images/real-estate-08.jpg"
-        ],
-        "amenities": [
-          "Private Lap Pool",
-          "Helipad Access",
-          "Concierge Butler",
-          "Arabian Sea Views",
-          "Private Wine Vault",
-          "Spa & Wellness Center",
-          "Tesla EV Superchargers",
-          "Executive Meeting Suite"
-        ],
-        "specs": [
-          { "label": "Structure", "value": "G + 52 Storeys" },
-          { "label": "Ceiling Height", "value": "13.5 Feet Clear" },
-          { "label": "Parking", "value": "4 Reserved Bays / Unit" },
-          { "label": "Security", "value": "7-Tier Biometric & AI" }
-        ]
-      },
-      {
-        "id": "proj-2",
-        "slug": "aura-sanctuary-golf-villas",
-        "title": "Aura Sanctuary Golf Villas",
-        "developer": "Aura Luxury Living",
-        "location": "Golf Course Road, Gurgaon",
-        "status": "Under Construction",
-        "units": "Bespoke 5 BHK Villas",
-        "startingPrice": "₹2.65 Cr",
-        "completionYear": "Q4 2026",
-        "totalTowers": "Private Gated Enclave",
-        "totalUnits": "28 Signature Estates",
-        "architect": "SAOTA Architectural Studio",
-        "image": "/images/real-estate-06.jpg",
-        "description": "Nestled alongside an international 18-hole championship golf course, Aura Sanctuary blends raw architectural travertine, floor-to-ceiling glass pavilions, and lush Japanese Zen gardens for the discerning few.",
-        "highlights": [
-          "Direct golf fairway access with private buggy driveway",
-          "Sunken reflection fire pit and 40-foot heated lap pool",
-          "Custom Poliform Italian kitchen and Gaggenau appliances",
-          "Off-grid 20kW solar microgrid with battery backup",
-          "Subterranean 6-car automobile gallery and lounge"
-        ],
-        "gallery": [
-          "/images/real-estate-06.jpg",
-          "/images/real-estate-07.jpg",
-          "/images/real-estate-08.jpg",
-          "/images/real-estate-09.jpg"
-        ],
-        "amenities": [
-          "18-Hole Championship Golf",
-          "Private Zen Gardens",
-          "Crestron Smart Automation",
-          "Exclusive Clubhouse",
-          "Heated Swimming Pool",
-          "Chauffeur Quarters",
-          "Private Wine Cellar",
-          "Gourmet Outdoor Kitchen"
-        ],
-        "specs": [
-          { "label": "Plot Size", "value": "1,200 Sq. Yards" },
-          { "label": "Built-up Area", "value": "9,800 Sq. Ft." },
-          { "label": "Levels", "value": "Basement + G + 2" },
-          { "label": "Green Rating", "value": "LEED Platinum Certified" }
-        ]
-      },
-      {
-        "id": "proj-3",
-        "slug": "viceroy-coastal-palazzos",
-        "title": "Viceroy Coastal Palazzos",
-        "developer": "Aura Heritage Division",
-        "location": "Candolim Coast, North Goa",
-        "status": "Newly Launched",
-        "units": "Secluded Beachfront Villas",
-        "startingPrice": "₹1.95 Cr",
-        "completionYear": "Q1 2027",
-        "totalTowers": "14 Private Sanctuaries",
-        "totalUnits": "14 Limited Palazzos",
-        "architect": "Studio Lotus & Marcio Kogan",
-        "image": "/images/real-estate-07.jpg",
-        "description": "An uncompromising seaside retreat where Portuguese-Goan heritage architecture meets contemporary minimalist tropical design, positioned on prime white-sand Candolim shoreline.",
-        "highlights": [
-          "Private beach access corridor guarded by 24/7 private security",
-          "Cliff-edge infinity pool extending toward sunset horizons",
-          "Custom teakwood craftsmanship and hand-dressed laterite stone",
-          "Dedicated mooring rights for sea tenders and private yachts",
-          "Ayurvedic wellness pavilion and private plunge pools"
-        ],
-        "gallery": [
-          "/images/real-estate-07.jpg",
-          "/images/real-estate-08.jpg",
-          "/images/real-estate-09.jpg",
-          "/images/real-estate-10.jpg"
-        ],
-        "amenities": [
-          "Direct Beach Access",
-          "Infinity Deck",
-          "Private Spa Pavilion",
-          "Yacht Mooring",
-          "Sunset Cocktail Lounge",
-          "Outdoor Rain Showers",
-          "Private Chef Service",
-          "Perimeter Security"
-        ],
-        "specs": [
-          { "label": "Footprint", "value": "8,500 Sq. Ft." },
-          { "label": "Beach Frontage", "value": "120 Feet Direct" },
-          { "label": "Architecture", "value": "Neo-Tropical Modern" },
-          { "label": "Possession", "value": "Early 2027" }
-        ]
-      },
-      {
-        "id": "proj-4",
-        "slug": "the-glasshouse-penthouse-collection",
-        "title": "The Glasshouse Penthouse Collection",
-        "developer": "Aura Metropole",
-        "location": "Jubilee Hills, Hyderabad",
-        "status": "Ready Possession",
-        "units": "Ultra-Luxury 4 BHK Penthouses",
-        "startingPrice": "₹3.10 Cr",
-        "completionYear": "2024",
-        "totalTowers": "1 Master Landmark",
-        "totalUnits": "18 Signature Sky Mansions",
-        "architect": "Arquitectonica Miami",
-        "image": "/images/real-estate-08.jpg",
-        "description": "Perched on the highest natural elevation of Jubilee Hills, The Glasshouse offers unobstructed 360-degree city views, double-height great rooms, and private cantilevered infinity pools.",
-        "highlights": [
-          "Double-height 24-foot living salon framed by structural glass",
-          "Private rooftop cantilevered sky pool and observatory terrace",
-          "Custom Italian Boffi kitchen and Sub-Zero refrigeration",
-          "High-speed biometric elevator with keyless access",
-          "Private climate-controlled cigar lounge and tasting room"
-        ],
-        "gallery": [
-          "/images/real-estate-08.jpg",
-          "/images/real-estate-09.jpg",
-          "/images/real-estate-10.jpg",
-          "/images/real-estate-11.jpg"
-        ],
-        "amenities": [
-          "Panoramic City Views",
-          "Double-Height Ceilings",
-          "Private Rooftop Lounge",
-          "Valet Parking",
-          "Infinity Sky Pool",
-          "Wellness Spa",
-          "Executive Boardroom",
-          "Multi-Tier Security"
-        ],
-        "specs": [
-          { "label": "Carpet Area", "value": "7,400 Sq. Ft." },
-          { "label": "Balcony Deck", "value": "1,800 Sq. Ft." },
-          { "label": "Ceiling Height", "value": "24 Feet Salon" },
-          { "label": "Status", "value": "Ready to Move" }
-        ]
-      },
-      {
-        "id": "proj-5",
-        "slug": "botanica-zen-sky-estates",
-        "title": "Botanica Zen Sky Estates",
-        "developer": "Aura Green Living",
-        "location": "Indiranagar, Bangalore",
-        "status": "Under Construction",
-        "units": "Bespoke 3 & 4 BHK Residences",
-        "startingPrice": "₹2.25 Cr",
-        "completionYear": "Q3 2026",
-        "totalTowers": "1 Sustainable Tower",
-        "totalUnits": "36 Biophilic Residences",
-        "architect": "WOHA Architects Singapore",
-        "image": "/images/real-estate-09.jpg",
-        "description": "A biophilic masterpiece incorporating cascading vertical forests, solar micro-generation, and zero-carbon wellness amenities in the cultural heart of Indiranagar.",
-        "highlights": [
-          "Private botanical terrace gardens with automated drip irrigation",
-          "Oxygen-enriched air purification system across all residences",
-          "Solar micro-grid providing 100% common area renewable energy",
-          "Natural stone and sustainable reclaimed timber finishes throughout",
-          "Rooftop heated lap pool with horizon views over the canopy"
-        ],
-        "gallery": [
-          "/images/real-estate-09.jpg",
-          "/images/real-estate-10.jpg",
-          "/images/real-estate-11.jpg",
-          "/images/real-estate-12.jpg"
-        ],
-        "amenities": [
-          "Vertical Forests",
-          "Solar Energy System",
-          "Meditation Pavilion",
-          "Private Elevators",
-          "Hydrotherapy Pool",
-          "Organic Herb Gardens",
-          "Library & Tea Lounge",
-          "Automated EV Charging"
-        ],
-        "specs": [
-          { "label": "Area", "value": "4,800 - 6,200 Sq. Ft." },
-          { "label": "Landscape", "value": "70% Open Green Space" },
-          { "label": "Certification", "value": "IGBC Platinum Green" },
-          { "label": "Possession", "value": "Late 2026" }
-        ]
-      },
-      {
-        "id": "proj-6",
-        "slug": "the-riviera-palm-mansions",
-        "title": "The Riviera Palm Mansions",
-        "developer": "Aura Signature Estates",
-        "location": "Alibaug Coast, Maharashtra",
-        "status": "Newly Launched",
-        "units": "Waterfront 6 BHK Palazzos",
-        "startingPrice": "₹4.50 Cr",
-        "completionYear": "2027",
-        "totalTowers": "10 Private Seaside Palazzos",
-        "totalUnits": "10 Ultra-Prime Estates",
-        "architect": "Kerry Hill Architects",
-        "image": "/images/real-estate-10.jpg",
-        "description": "Direct waterfront estates just 15 minutes by speedboat from Gateway of India, offering private jetties, secluded beaches, and international five-star concierge services.",
-        "highlights": [
-          "Private licensed deep-water speedboat berth for each estate",
-          "Helipad with VIP clearances from Mumbai International Airport",
-          "50-foot infinity swimming pool merging seamlessly into the sea",
-          "Bespoke guest casita and private staff quarters",
-          "Direct private beach access with pristine golden sands"
-        ],
-        "gallery": [
-          "/images/real-estate-10.jpg",
-          "/images/real-estate-11.jpg",
-          "/images/real-estate-12.jpg",
-          "/images/real-estate-13.jpg"
-        ],
-        "amenities": [
-          "Private Helipad",
-          "Speedboat Berth",
-          "Infinity Sea Pool",
-          "24/7 Concierge",
-          "Tennis & Paddle Court",
-          "Private Wine Cellar",
-          "Spa & Sauna Suites",
-          "Automated Security"
-        ],
-        "specs": [
-          { "label": "Plot Size", "value": "1.8 Private Acres" },
-          { "label": "Residence Area", "value": "11,500 Sq. Ft." },
-          { "label": "Waterfront", "value": "200 Ft Direct Shoreline" },
-          { "label": "Access", "value": "Speedboat & Helicopter" }
-        ]
-      }
-    ]
-  },
-  "contact": {
-    "badge": "CONTACT US",
-    "title": "Talk to HAUS Group advisors",
-    "description": "Buying, renting, or listing across Delhi NCR? Share a few details and a HAUS Group advisor will call you back the same day.",
-    "office": {
-      "label": "OFFICE",
-      "address": "Tower B, 4th Floor, DLF Cyber Hub, Gurugram, Haryana 122002"
-    },
-    "phone": {
-      "label": "PHONE",
-      "number": "+91 98100 45210"
-    },
-    "email": {
-      "label": "EMAIL",
-      "address": "hello@hausgroup.in"
-    },
-    "footerNote": "Prefer a call, WhatsApp, or email? Reach us Mon–Sat, 10:00 AM – 7:00 PM IST — or send a message and we will reply shortly.",
-    "form": {
-      "badge": "WRITE US",
-      "title": "Send a message",
-      "description": "Tell us your budget, preferred areas (Gurugram, Noida, Delhi, Faridabad, Ghaziabad), and timeline.",
-      "fields": {
-        "fullName": {
-          "label": "NAME",
-          "placeholder": "e.g. Arjun Mehta"
-        },
-        "email": {
-          "label": "EMAIL",
-          "placeholder": "e.g. arjun.mehta@gmail.com"
-        },
-        "phone": {
-          "label": "PHONE",
-          "placeholder": "e.g. +91 98765 43210"
-        },
-        "message": {
-          "label": "MESSAGE",
-          "placeholder": "e.g. Looking for a 3 BHK in Sector 65, Gurugram under Rs 2 Cr"
-        }
-      },
-      "consentText": "By checking this box, you agree to our Privacy Policy.",
-      "submitButtonText": "Send Message",
-      "success": {
-        "title": "Message Sent!",
-        "description": "Thank you for reaching out. A HAUS Group advisor will call you back today.",
-        "resetButtonText": "Send Another Message"
-      }
-    }
-  },
   "servicesPage": {
     "badge": "SERVICES",
-    "title": "Helpful services built around your next step.",
-    "description": "Use this page to explain the core services, support, and outcomes your team provides for every visitor.",
-    "subDescription": "Each service card can be edited from the same JSON-backed editor, including text, images, and supporting details.",
-    "heroImage": "/images/support-handshake-hq.jpg",
+    "title": "Bespoke Services for Exceptional Homes",
+    "description": "Tailored guidance for buying, appraising, securing, and selling luxury properties.",
+    "subDescription": "Clear, discreet, and reliable real estate advisory from start to finish.",
+    "heroImage": "/images/real-estate-07.jpg",
     "ctaTalk": {
-      "text": "Talk to an advisor",
+      "text": "Get In Touch",
       "href": "/contact"
     },
     "ctaExplore": {
-      "text": "Explore homes",
+      "text": "View Properties",
       "href": "/listings"
     },
     "items": [
       {
         "id": "srv-1",
         "step": "01",
-        "category": "SERVICE",
-        "title": "Planning",
-        "description": "Clarify goals, audience needs, and the right structure before visitors take action.",
-        "tags": ["Strategy", "Content"],
-        "ctaText": "Enquire about this",
-        "ctaHref": "/contact",
-        "image": "/images/real-estate-07.jpg",
-        "imagePosition": "left"
+        "category": "BUY",
+        "title": "Property Acquisition",
+        "description": "Prime residential villas, penthouses, and private estates.",
+        "image": "/images/modern-buildings.jpg",
+        "ctaText": "Inquire",
+        "ctaHref": "/contact"
       },
       {
         "id": "srv-2",
         "step": "02",
-        "category": "SERVICE",
-        "title": "Execution",
-        "description": "Present offers, proof, and conversion paths through clean editable sections.",
-        "tags": ["Design", "Build"],
-        "ctaText": "Enquire about this",
-        "ctaHref": "/contact",
-        "image": "/images/real-estate-08.jpg",
-        "imagePosition": "right"
+        "category": "VALUATION",
+        "title": "Market Valuation",
+        "description": "Accurate pricing and architectural valuation for your home.",
+        "image": "/images/real-estate-06.jpg",
+        "ctaText": "Inquire",
+        "ctaHref": "/contact"
       },
       {
         "id": "srv-3",
         "step": "03",
-        "category": "SERVICE",
-        "title": "Support",
-        "description": "Keep enquiries, updates, and follow-up simple for both visitors and your team.",
-        "tags": ["Follow-up", "Updates"],
-        "ctaText": "Enquire about this",
-        "ctaHref": "/contact",
-        "image": "/images/support-handshake.jpg",
-        "imagePosition": "left"
+        "category": "LEGAL",
+        "title": "Legal & Conveyancing",
+        "description": "Smooth contracts, clear documentation, and secure escrow.",
+        "image": "/images/real-estate-08.jpg",
+        "ctaText": "Inquire",
+        "ctaHref": "/contact"
       },
       {
         "id": "srv-4",
         "step": "04",
-        "category": "SERVICE",
-        "title": "Growth",
-        "description": "Improve page content and calls to action as new visitor needs become clear.",
-        "tags": ["Review", "Improve"],
-        "ctaText": "Enquire about this",
-        "ctaHref": "/contact",
-        "image": "/images/real-estate-09.jpg",
-        "imagePosition": "right"
+        "category": "SELL",
+        "title": "Discreet Selling",
+        "description": "Targeted marketing to qualified buyers with total privacy.",
+        "image": "/images/real-estate-04.jpg",
+        "ctaText": "Inquire",
+        "ctaHref": "/contact"
       }
     ],
     "whyChooseUs": {
@@ -1777,74 +1297,98 @@
     }
   ],
   "about": {
-    "title": "About",
-    "image": "/images/modern-buildings.jpg",
-    "imageAlt": "Luxury Estate Living",
-    "statValue": "$2.4B+",
-    "statLabel": "Private Off-Market Portfolio Managed",
-    "paragraph1": "Real Estates stands at the apex of global architectural acquisitions. Founded on discretion, aesthetic rigor, and unmatched fiduciary loyalty, we represent high-net-worth families, institutional patrons, and architectural collectors worldwide.",
-    "paragraph2": "Every residence in our private registry is verified for generational provenance, prime enclave status, and unparalleled living experience.",
-    "pillars": [
-      {
-        "title": "Discreet Advisory",
-        "description": "Strict non-disclosure representation across all private acquisitions."
-      },
-      {
-        "title": "Curated Provenance",
-        "description": "Rare landmark estates, hillside sanctuaries, and waterfront villas."
-      }
+    "badge": "OUR STORY",
+    "title": "About Us",
+    "description": "Founded on discretion, architectural distinction, and fiduciary loyalty, Aura Estates curates extraordinary residences for generational living.",
+    "subDescription": "From iconic sea-facing penthouses in Mumbai to tranquil heritage villas in Goa, our private desk delivers off-market exclusivity and seamless acquisitions.",
+    "primaryCard": {
+      "tag": "Private Enclaves",
+      "title": "Curated Sanctuaries",
+      "image": "/images/modern-buildings.jpg",
+      "imageAlt": "Curated Sanctuaries",
+      "statValue": "$2.4B+"
+    },
+    "secondaryCard": {
+      "tag": "Artisanal Craftsmanship",
+      "title": "Refined Materiality & Light",
+      "image": "/images/real-estate-08.jpg",
+      "imageAlt": "Architectural details"
+    },
+    "strip": {
+      "label": "Private Off-Market Portfolio Managed",
+      "title": "Discreet Off-Market Portfolio",
+      "ctaText": "Explore",
+      "ctaLink": "/listings"
+    },
+    "stats": [
+      { "value": "18+", "label": "Years Excellence" },
+      { "value": "₹3,200 Cr+", "label": "Portfolio Transacted" },
+      { "value": "100%", "label": "Private & Discreet" },
+      { "value": "5 Cities", "label": "Prime Enclaves" }
     ],
-    "ctaText": "Explore Our Heritage",
-    "ctaLink": "/services"
-  },
-  "categories": [
-    {
-      "title": "Waterfront Palazzos",
-      "count": "24 Sanctuaries",
-      "image": "/images/real-estate-01.jpg",
-      "link": "/listings"
-    },
-    {
-      "title": "Hillside Horizons",
-      "count": "18 Estates",
-      "image": "/images/real-estate-02.jpg",
-      "link": "/listings"
-    },
-    {
-      "title": "Skyline Penthouses",
-      "count": "32 Residences",
-      "image": "/images/real-estate-03.jpg",
-      "link": "/listings"
-    },
-    {
-      "title": "Heritage Manors",
-      "count": "12 Enclaves",
-      "image": "/images/real-estate-04.jpg",
-      "link": "/listings"
-    }
-  ],
-  "whyChooseUs": {
-    "title": "Why Choose Aura Estates",
-    "pillars": [
+    "values": [
       {
         "number": "01",
-        "title": "Off-Market Registry",
-        "description": "Over 65% of our portfolio transactions occur confidentially outside public MLS listings for complete principal privacy."
+        "title": "Absolute Discretion",
+        "description": "Bilateral non-disclosure agreements and confidential blind acquisitions for private principals."
       },
       {
         "number": "02",
-        "title": "Rigorous Valuation",
-        "description": "Direct appraisal modeling benchmarking historical architectural appreciation and premier enclave scarcity."
+        "title": "Architectural Rarity",
+        "description": "Handpicked trophy residences boasting generational provenance and prime locations."
       },
       {
         "number": "03",
-        "title": "Global Private Network",
-        "description": "Seamless syndication connecting verified buyers across Mayfair, Beverly Hills, Amalfi, Dubai, and Zurich."
+        "title": "Fiduciary Integrity",
+        "description": "Unbiased advisory, institutional-grade valuation, and transparent legal diligence."
+      }
+    ],
+    "team": [
+      {
+        "name": "Devansh Singhania",
+        "role": "Founder & Managing Director",
+        "image": "/images/team_01.avif"
       },
       {
-        "number": "04",
-        "title": "Bespoke Concierge",
-        "description": "From private aviation inspection charters to discreet escrow and international title structuring."
+        "name": "Aanya Mehra",
+        "role": "Partner, Private Client Desk",
+        "image": "/images/team_02.avif"
+      },
+      {
+        "name": "Kabir Malhotra",
+        "role": "Head of Architectural Valuations",
+        "image": "/images/team_03.avif"
+      },
+      {
+        "name": "Rhea Oberoi",
+        "role": "Director, Legal & Escrow Conveyancing",
+        "image": "/images/team_4.avif"
+      }
+    ]
+  },
+  "whyChooseUs": {
+    "title": "Why Choose US",
+    "pillars": [
+      {
+        "number": "01",
+        "title": "Confidentiality",
+        "subtitle": "Off-Market Registry",
+        "image": "/images/modern-buildings.jpg",
+        "tagline": "Total discretion with closed-door transactions for ultra-high-net-worth acquisitions."
+      },
+      {
+        "number": "02",
+        "title": "Curated Scarcity",
+        "subtitle": "Prime Enclaves",
+        "image": "/images/real-estate-06.jpg",
+        "tagline": "Rare architectural masterworks in coveted waterfronts, historic retreats & private towers."
+      },
+      {
+        "number": "03",
+        "title": "White-Glove",
+        "subtitle": "Bespoke Concierge",
+        "image": "/images/real-estate-08.jpg",
+        "tagline": "Seamless fiduciary representation, from private aviation previews to cross-border conveyancing."
       }
     ]
   },
@@ -2241,20 +1785,6 @@
   "faqConfig": {
     "title": "Frequently Asked Questions"
   },
-  "ctaSection": {
-    "badge": "Private Representation",
-    "title": "Entrust Your Acquisition or Disposition to the Leaders in Prime Real Estate.",
-    "description": "Whether you are looking to quietly acquire a private Mediterranean estate or list an architectural landmark, our global advisory team ensures total discretion.",
-    "image": "/images/real-estate-01.jpg",
-    "primaryCta": {
-      "text": "Schedule Private Consultation",
-      "href": "/contact"
-    },
-    "secondaryCta": {
-      "text": "Direct Fiduciary Line",
-      "href": "tel:+919876543210"
-    }
-  },
   "contactSection": {
     "badge": "Get in Touch",
     "title": "Contact Us",
@@ -2295,23 +1825,6 @@
       "submitButtonText": "Send Message →",
       "successTitle": "Message Sent Successfully",
       "successMessage": "Thank you for reaching out. One of our senior advisors will contact you shortly."
-    }
-  },
-  "signatureProperty": {
-    "badge": "Signature Masterpiece",
-    "location": "Amalfi Coast, Italy",
-    "title": "Villa Bellissima Cliffside Sanctuary",
-    "price": "$48,500,000 USD",
-    "description": "Perched on the dramatic cliffs of Amalfi with private funicular descent, private deep-water yacht mooring, and 180-degree unobstructed Tyrrhenian sea horizons.",
-    "image": "/images/real-estate-02.jpg",
-    "specs": [
-      { "label": "Interior", "value": "14,200 sq ft" },
-      { "label": "Suites", "value": "8 Bedrooms" },
-      { "label": "Grounds", "value": "3.4 Acres" }
-    ],
-    "cta": {
-      "text": "Private Showing Request",
-      "href": "/contact"
     }
   }
 }

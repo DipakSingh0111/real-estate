@@ -273,7 +273,7 @@ export interface EstateData {
   };
   stats: CounterStat[];
   citySection: CitySectionData;
-  latestProjects: LatestProjectsData;
+  latestProjects?: LatestProjectsData;
   testimonials: TestimonialsData;
   blogPosts?: BlogPost[];
   contact: ContactData;

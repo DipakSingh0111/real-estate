@@ -13,108 +13,73 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   data = defaultData.servicesPage as ServicesPageData,
 }) => {
   return (
-    <>
-      {/* 1. Top Hero Section: Editorial Heading + Paragraphs + CTAs + Photo */}
-      <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 border-b border-[#E5DFD3] bg-[#F7F4EE]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-8 h-[1.5px] bg-[#B8945A]" />
-              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold text-[#B8945A]">
-                {data.badge || "Advisory Excellence"}
-              </span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal leading-[1.15] tracking-tight mb-4">
-              {data.title}
-            </h2>
-
-            <p className="text-base sm:text-lg text-[#737373] leading-relaxed mb-4 font-light max-w-xl">
-              {data.description}
-            </p>
-            <p className="text-sm text-[#737373]/80 leading-relaxed mb-8 max-w-xl font-light">
-              {data.subDescription}
-            </p>
-
-            {/* CTAs */}
-            <div className="flex items-center flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="px-7 py-3.5 bg-[#B8945A] hover:bg-[#9E7D46] text-[#F7F4EE] text-xs font-semibold uppercase tracking-[0.2em] transition-colors"
-              >
-                Inquire Privately →
-              </Link>
-
-              <Link
-                href="/listings"
-                className="px-7 py-3.5 border border-[#171717] text-[#171717] hover:border-[#B8945A] hover:text-[#B8945A] text-xs font-semibold uppercase tracking-[0.2em] transition-colors"
-              >
-                Explore Portfolio
-              </Link>
-            </div>
+    <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE]">
+      <div className="max-w-7xl mx-auto">
+        {/* Minimal Header */}
+        <div className="mb-12 pb-6 border-b border-[#E5DFD3]">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="w-8 h-[1.5px] bg-[#B8945A]" />
+            <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#B8945A]">
+              WHAT WE DO
+            </span>
           </div>
-
-          {/* Right Column: Clean Architectural Photography */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            <div className="w-full max-w-lg aspect-[4/3] overflow-hidden border border-[#E5DFD3] bg-[#171717]">
-              <img
-                src={data.heroImage || "/images/real-estate-07.jpg"}
-                alt={data.title}
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal tracking-tight">
+            Our Services
+          </h2>
         </div>
-      </section>
 
-      {/* 2. Grid of 6 Specialized Services */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE]">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-14">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-8 h-[1.5px] bg-[#B8945A]" />
-              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold text-[#B8945A]">
-                Comprehensive Practice
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal tracking-tight">
-              Specialized Fiduciary Advisory
-            </h2>
-          </div>
+        {/* Visual Cards: Big Images + Minimal 1-line text */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {data.items?.map((item, idx) => (
+            <div
+              key={item.id || idx}
+              className="bg-white border border-[#E5DFD3] hover:border-[#B8945A] hover:shadow-[0_16px_36px_rgba(184,148,90,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+            >
+              {/* Image Frame */}
+              <div className="relative aspect-[16/12] overflow-hidden bg-[#171717]">
+                <img
+                  src={(item as any).image || "/images/modern-buildings.jpg"}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/40 via-transparent to-transparent pointer-events-none" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {data.items?.map((item, idx) => (
-              <div
-                key={item.id || idx}
-                className="p-8 bg-[#F7F4EE] border border-[#E5DFD3] hover:border-[#B8945A]/60 transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <span className="font-serif text-3xl text-[#B8945A] font-light block mb-4">
-                    0{idx + 1}
+                <div className="absolute top-3 left-3 bg-[#171717]/85 backdrop-blur-sm px-2.5 py-1 border border-[#B8945A]/40">
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B8945A]">
+                    0{idx + 1} · {(item as any).category || "SERVICE"}
                   </span>
-                  <h3 className="font-serif text-2xl text-[#171717] font-normal mb-3">
+                </div>
+              </div>
+
+              {/* Minimal Text Content */}
+              <div className="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="font-serif text-xl sm:text-2xl text-[#171717] font-normal mb-2 group-hover:text-[#B8945A] transition-colors leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#737373] leading-relaxed font-light mb-6">
+                  <p className="text-xs sm:text-sm text-[#737373] leading-relaxed font-light">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#E5DFD3]">
+                {/* Direct CTA */}
+                <div className="pt-4 mt-6 border-t border-[#E5DFD3] flex items-center justify-between">
                   <Link
                     href="/contact"
-                    className="text-xs uppercase tracking-[0.2em] font-semibold text-[#171717] hover:text-[#B8945A] transition-colors inline-flex items-center gap-2"
+                    className="text-xs uppercase tracking-[0.2em] font-semibold text-[#171717] group-hover:text-[#B8945A] transition-colors inline-flex items-center gap-2"
                   >
-                    <span>Consult Advisor</span>
-                    <span>→</span>
+                    <span>Inquire Now</span>
+                    <span className="text-[#B8945A] transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </Link>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E5DFD3] group-hover:bg-[#B8945A] transition-colors" />
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
+

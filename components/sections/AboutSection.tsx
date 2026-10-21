@@ -1,5 +1,6 @@
 import React from "react";
 import defaultData from "@/data/properties.json";
+import { Reveal } from "@/components/animations/Reveal";
 
 export interface AboutSectionProps {
   data?: typeof defaultData.about;
@@ -9,67 +10,89 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   data = defaultData.about,
 }) => {
   return (
-    <section className="py-14 sm:py-16 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE] border-t border-[#E5DFD3]">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        {/* Left Column: Architectural Imagery Collage */}
-        <div className="lg:col-span-6 relative">
-          <div className="relative aspect-[4/3] overflow-hidden border border-[#E5DFD3] shadow-[0_12px_40px_rgba(23,23,23,0.06)]">
-            <img
-              src={data.image}
-              alt={data.imageAlt}
-              className="w-full h-full object-cover img-zoom"
-            />
-          </div>
-
-          {/* Floating Subtle Stats Box */}
-          <div className="absolute -bottom-8 -right-4 sm:-right-8 bg-[#171717] text-[#F7F4EE] p-6 sm:p-8 border border-[#B8945A]/40 max-w-[260px] shadow-2xl hidden sm:block">
-            <span className="font-serif text-3xl sm:text-4xl text-[#B8945A] block font-normal">
-              {data.statValue}
-            </span>
-            <span className="text-[11px] uppercase tracking-[0.2em] text-[#737373] mt-1 block">
-              {data.statLabel}
+    <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE] border-t border-[#E5DFD3]">
+      <div className="max-w-7xl mx-auto">
+        {/* Clean, Simple Header */}
+        <Reveal className="mb-12 sm:mb-14 pb-6 border-b border-[#E5DFD3]">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="w-8 h-[1.5px] bg-[#B8945A]" />
+            <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#B8945A]">
+              {data.badge || "OUR STORY"}
             </span>
           </div>
-        </div>
-
-        {/* Right Column: Editorial Philosophy */}
-        <div className="lg:col-span-6 space-y-6">
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#171717] tracking-tight leading-[1.12]">
-            {data.title}
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#171717] tracking-tight mb-4">
+            {data.title || "About Us"}
           </h2>
-
-          <p className="text-base sm:text-lg text-[#737373] leading-relaxed font-light">
-            {data.paragraph1}
+          <p className="text-base sm:text-lg text-[#737373] font-light max-w-2xl leading-relaxed">
+            {data.description}
           </p>
+        </Reveal>
 
-          <p className="text-base sm:text-lg text-[#737373] leading-relaxed font-light">
-            {data.paragraph2}
-          </p>
-
-          {/* Key Pillars */}
-          <div className="grid grid-cols-2 gap-8 pt-6 border-t border-[#E5DFD3]">
-            {data.pillars.map((pillar, idx) => (
-              <div key={idx}>
-                <span className="font-serif text-2xl sm:text-3xl text-[#171717] block font-normal">
-                  {pillar.title}
+        {/* Dual Luxury Visual Grid - fully data-driven */}
+        <Reveal yOffset={40} delay={0.15}>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+            {/* Main Large Visual */}
+            <div className="md:col-span-7 relative aspect-[16/11] md:aspect-auto md:min-h-[460px] overflow-hidden border border-[#E5DFD3] group bg-[#171717]">
+              <img
+                src={data.primaryCard?.image || "/images/modern-buildings.jpg"}
+                alt={data.primaryCard?.imageAlt || "Aura Estates"}
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-[#F7F4EE]">
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-[#B8945A] font-semibold block mb-1">
+                    {data.primaryCard?.tag}
+                  </span>
+                  <h3 className="font-serif text-2xl font-normal text-[#F7F4EE]">
+                    {data.primaryCard?.title}
+                  </h3>
+                </div>
+                <span className="font-serif text-3xl text-[#B8945A] font-light">
+                  {data.primaryCard?.statValue}
                 </span>
-                <p className="text-sm sm:text-base text-[#737373] mt-2 leading-relaxed">
-                  {pillar.description}
-                </p>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div className="pt-2">
-            <a
-              href={data.ctaLink}
-              className="inline-flex items-center gap-3 px-8 py-3.5 bg-[#171717] hover:bg-[#B8945A] text-[#F7F4EE] hover:text-[#171717] text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300"
-            >
-              <span>{data.ctaText}</span>
-              <span className="text-[#B8945A]">→</span>
-            </a>
+            {/* Secondary Visual + Minimal Stats */}
+            <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8">
+              <div className="relative aspect-[16/10] overflow-hidden border border-[#E5DFD3] group bg-[#171717]">
+                <img
+                  src={data.secondaryCard?.image || "/images/real-estate-08.jpg"}
+                  alt={data.secondaryCard?.imageAlt || "Architectural details"}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-5 left-5 text-[#F7F4EE]">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#B8945A] font-semibold block">
+                    {data.secondaryCard?.tag}
+                  </span>
+                  <span className="font-serif text-lg font-normal">
+                    {data.secondaryCard?.title}
+                  </span>
+                </div>
+              </div>
+
+              {/* Strip */}
+              <div className="p-7 bg-white border border-[#E5DFD3] flex items-center justify-between shadow-[0_4px_24px_rgba(23,23,23,0.04)]">
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-[#737373] block mb-1">
+                    {data.strip?.label}
+                  </span>
+                  <span className="font-serif text-xl sm:text-2xl text-[#171717] font-normal">
+                    {data.strip?.title}
+                  </span>
+                </div>
+                <a
+                  href={data.strip?.ctaLink || "/listings"}
+                  className="px-5 py-3 bg-[#171717] hover:bg-[#B8945A] text-[#F7F4EE] hover:text-[#171717] text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shrink-0"
+                >
+                  {data.strip?.ctaText || "Explore"}
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
