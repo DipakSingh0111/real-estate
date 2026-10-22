@@ -113,11 +113,6 @@
                   "active": false
                 },
                 {
-                  "label": "Services",
-                  "href": "/services",
-                  "active": false
-                },
-                {
                   "label": "Faq's",
                   "href": "/faq",
                   "active": false
@@ -126,11 +121,16 @@
                   "label": "Blog",
                   "href": "/blog",
                   "active": false
+                },
+                {
+                  "label": "Contact Us",
+                  "href": "/contact",
+                  "active": false
                 }
               ],
               "cta": {
-                "label": "Contact Us",
-                "href": "/contact"
+                "label": "Enquiry",
+                "href": "/enquiry"
               }
             }
           }
@@ -294,7 +294,7 @@
                   "phoneLabel": "Phone Number *",
                   "phonePlaceholder": "+1 00000 00000",
                   "messageLabel": "Your Message",
-                  "submitButtonText": "Request Viewing Tour →"
+                  "submitButtonText": "Submit →"
                 }
               },
               "list": [
@@ -1056,321 +1056,6 @@
                   "status": "For Sale",
                   "areaSqFt": 10800,
                   "description": "Nestled in Koramangala's iconic third block among global tech titans, with heated pool, gym, and imported Italian travertine."
-                },
-                {
-                  "id": "blr-4",
-                  "title": "Kingfisher Towers Sky Palace",
-                  "price": "₹38.0 Cr",
-                  "location": "Lavelle Road, Central Bangalore",
-                  "city": "Bangalore",
-                  "beds": 4,
-                  "baths": 5,
-                  "features": [
-                    "4 Beds",
-                    "5 Baths",
-                    "Cubbon Park Views",
-                    "Clubhouse Lounge"
-                  ],
-                  "image": "/images/real-estate-17.jpg",
-                  "tag": "Central Parkfront",
-                  "type": "Luxury High-Rise Suite",
-                  "status": "For Sale",
-                  "areaSqFt": 7100,
-                  "description": "Overlooking the lush canopy of Cubbon Park, this grand condominium delivers unmatched downtown luxury and security."
-                },
-                {
-                  "id": "blr-5",
-                  "title": "Whitefield Lakefront Botanica Estate",
-                  "price": "₹22.0 Cr",
-                  "location": "Palm Meadows, Whitefield, Bangalore",
-                  "city": "Bangalore",
-                  "beds": 5,
-                  "baths": 6,
-                  "features": [
-                    "5 Beds",
-                    "6 Baths",
-                    "Lake Facing",
-                    "Private Orchard"
-                  ],
-                  "image": "/images/real-estate-10.jpg",
-                  "tag": "Botanical Retreat",
-                  "type": "Lakefront Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 7600,
-                  "description": "Set amidst 1.5 acres of private gardens with tranquil lake frontage, infinity pool, and bespoke equestrian styling."
-                },
-                {
-                  "id": "blr-6",
-                  "title": "Hebbal Lake Horizon Sky Villa",
-                  "price": "₹18.5 Cr",
-                  "location": "Hebbal, Bangalore North",
-                  "city": "Bangalore",
-                  "beds": 4,
-                  "baths": 4,
-                  "features": [
-                    "4 Beds",
-                    "4 Baths",
-                    "Airport Corridor",
-                    "Infinity Balcony"
-                  ],
-                  "image": "/images/real-estate-11.jpg",
-                  "tag": "North Bangalore Gateway",
-                  "type": "Sky Villa Penthouse",
-                  "status": "For Sale",
-                  "areaSqFt": 5400,
-                  "description": "Speedy access to Kempegowda International Airport combined with panoramic lake horizons and five-star community amenities."
-                },
-                {
-                  "id": "hyd-1",
-                  "title": "Jubilee Hills Ridge Top Palace",
-                  "price": "₹58.0 Cr",
-                  "location": "Road No. 36, Jubilee Hills, Hyderabad",
-                  "city": "Hyderabad",
-                  "beds": 6,
-                  "baths": 8,
-                  "features": [
-                    "6 Beds",
-                    "8 Baths",
-                    "Rocky Ridge Vistas",
-                    "Cascade Pool"
-                  ],
-                  "image": "/images/real-estate-12.jpg",
-                  "tag": "Jubilee Hills Crown",
-                  "type": "Regal Hilltop Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 11500,
-                  "description": "Commanding panoramic perspectives from the highest ridge of Jubilee Hills, featuring dramatic granite cliffs, cascade pool, and banquet hall."
-                },
-                {
-                  "id": "hyd-2",
-                  "title": "Banjara Hills Royal Heritage Villa",
-                  "price": "₹44.0 Cr",
-                  "location": "Road No. 12, Banjara Hills, Hyderabad",
-                  "city": "Hyderabad",
-                  "beds": 5,
-                  "baths": 6,
-                  "features": [
-                    "5 Beds",
-                    "6 Baths",
-                    "Private Garden",
-                    "Home Theater"
-                  ],
-                  "image": "/images/real-estate-13.jpg",
-                  "tag": "Aristocratic Enclave",
-                  "type": "Classical Modern Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 9200,
-                  "description": "A tranquil haven in Banjara Hills with private manicured lawns, high-vaulted wooden ceilings, and state-of-the-art security."
-                },
-                {
-                  "id": "hyd-3",
-                  "title": "HITEC City Glass Tower Penthouse",
-                  "price": "₹27.5 Cr",
-                  "location": "Knowledge City, HITEC City, Hyderabad",
-                  "city": "Hyderabad",
-                  "beds": 4,
-                  "baths": 5,
-                  "features": [
-                    "4 Beds",
-                    "5 Baths",
-                    "Financial District Skyline",
-                    "Infinity Plunge"
-                  ],
-                  "image": "/images/real-estate-15.jpg",
-                  "tag": "Tech Metropolis",
-                  "type": "Sky Penthouse",
-                  "status": "For Sale",
-                  "areaSqFt": 6800,
-                  "description": "Directly above Hyderabad's vibrant corporate district, this sky residence blends floor-to-ceiling glass walls with luxury clubhouse access."
-                },
-                {
-                  "id": "hyd-4",
-                  "title": "Gandipet Lakefront Private Sanctuary",
-                  "price": "₹34.0 Cr",
-                  "location": "Gandipet Lake, Hyderabad",
-                  "city": "Hyderabad",
-                  "beds": 5,
-                  "baths": 6,
-                  "features": [
-                    "5 Beds",
-                    "6 Baths",
-                    "Direct Lake Views",
-                    "Boat Jetty"
-                  ],
-                  "image": "/images/real-estate-16.jpg",
-                  "tag": "Lakeside Serenity",
-                  "type": "Waterfront Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 8600,
-                  "description": "Peaceful lakefront compound offering total seclusion from city noise, equipped with private tennis court and organic orchards."
-                },
-                {
-                  "id": "hyd-5",
-                  "title": "Financial District Triplex Sky Villa",
-                  "price": "₹31.0 Cr",
-                  "location": "Nanakramguda, Financial District, Hyderabad",
-                  "city": "Hyderabad",
-                  "beds": 4,
-                  "baths": 5,
-                  "features": [
-                    "4 Beds",
-                    "5 Baths",
-                    "Triple Height Atrium",
-                    "Private Elevator"
-                  ],
-                  "image": "/images/real-estate-17.jpg",
-                  "tag": "High-Rise Living",
-                  "type": "Triplex Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 7400,
-                  "description": "Triple-height glass atrium overlooking the glowing financial skyline, featuring private gym and bespoke temperature-controlled wine room."
-                },
-                {
-                  "id": "hyd-6",
-                  "title": "Gachibowli Green Reserve Compound",
-                  "price": "₹23.5 Cr",
-                  "location": "Gachibowli, Hyderabad",
-                  "city": "Hyderabad",
-                  "beds": 4,
-                  "baths": 5,
-                  "features": [
-                    "4 Beds",
-                    "5 Baths",
-                    "Gated Forest Enclave",
-                    "Heated Pool"
-                  ],
-                  "image": "/images/real-estate-18.jpg",
-                  "tag": "Forest Edge",
-                  "type": "Boutique Eco Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 5900,
-                  "description": "Bordering pristine reserve forest lands, providing cool breezes, natural privacy, and international school accessibility."
-                },
-                {
-                  "id": "goa-1",
-                  "title": "Assagao Portuguese Heritage Manor",
-                  "price": "₹28.5 Cr",
-                  "location": "Badem, Assagao, North Goa",
-                  "city": "Goa",
-                  "beds": 5,
-                  "baths": 6,
-                  "features": [
-                    "5 Beds",
-                    "6 Baths",
-                    "Private Pool",
-                    "Restored Heritage"
-                  ],
-                  "image": "/images/real-estate-01.jpg",
-                  "tag": "Colonial Restoration",
-                  "type": "Portuguese Estate",
-                  "status": "For Sale",
-                  "areaSqFt": 7200,
-                  "description": "Authentic 18th-century Portuguese estate lovingly restored with oyster shell windows, hand-painted azulejos tiles, and tropical gardens."
-                },
-                {
-                  "id": "goa-2",
-                  "title": "Anjuna Cliffside Ocean Villa",
-                  "price": "₹32.0 Cr",
-                  "location": "Anjuna Cliffs, North Goa",
-                  "city": "Goa",
-                  "beds": 4,
-                  "baths": 5,
-                  "features": [
-                    "4 Beds",
-                    "5 Baths",
-                    "Sunset Ocean Views",
-                    "Cliffside Pool"
-                  ],
-                  "image": "/images/real-estate-02.jpg",
-                  "tag": "Cliffside Ocean",
-                  "type": "Modern Tropical Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 6100,
-                  "description": "Perched on dramatic cliffs above the Arabian Sea with unhindered sunset horizons and private steps down to a secluded rocky cove."
-                },
-                {
-                  "id": "goa-3",
-                  "title": "Candolim Beachfront Luxury Haven",
-                  "price": "₹36.5 Cr",
-                  "location": "Candolim Beach, Goa",
-                  "city": "Goa",
-                  "beds": 5,
-                  "baths": 6,
-                  "features": [
-                    "5 Beds",
-                    "6 Baths",
-                    "Direct Beach Frontage",
-                    "Private Spa Deck"
-                  ],
-                  "image": "/images/real-estate-03.jpg",
-                  "tag": "Direct Sand Access",
-                  "type": "Luxury Beachfront Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 6900,
-                  "description": "Walk directly from your private infinity lawn onto the golden sands of Candolim. Includes dedicated butler quarters and beach shower pavilion."
-                },
-                {
-                  "id": "goa-4",
-                  "title": "Reis Magos Sea Facing Sanctuary",
-                  "price": "₹24.0 Cr",
-                  "location": "Reis Magos, Mandovi River, Goa",
-                  "city": "Goa",
-                  "beds": 4,
-                  "baths": 4,
-                  "features": [
-                    "4 Beds",
-                    "4 Baths",
-                    "Mandovi River Panorama",
-                    "Infinity Pool"
-                  ],
-                  "image": "/images/real-estate-04.jpg",
-                  "tag": "River Meets Ocean",
-                  "type": "Contemporary Hill Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 5400,
-                  "description": "Spectacular views where the Mandovi River embraces the Arabian Sea, adjacent to historic Fort Reis Magos."
-                },
-                {
-                  "id": "goa-5",
-                  "title": "Siolim Riverfront Private Estate",
-                  "price": "₹19.5 Cr",
-                  "location": "Siolim, North Goa",
-                  "city": "Goa",
-                  "beds": 4,
-                  "baths": 5,
-                  "features": [
-                    "4 Beds",
-                    "5 Baths",
-                    "Private Yacht Mooring",
-                    "Tropical Palm Grove"
-                  ],
-                  "image": "/images/real-estate-05.jpg",
-                  "tag": "Riverfront Mooring",
-                  "type": "Boutique River Estate",
-                  "status": "For Sale",
-                  "areaSqFt": 5800,
-                  "description": "Serene riverside compound with private boat jetty, mature coconut grove, and infinity pool that blends into river waters."
-                },
-                {
-                  "id": "goa-6",
-                  "title": "Aldona Backwater Modernist Retreat",
-                  "price": "₹16.8 Cr",
-                  "location": "Aldona Village, Goa",
-                  "city": "Goa",
-                  "beds": 4,
-                  "baths": 4,
-                  "features": [
-                    "4 Beds",
-                    "4 Baths",
-                    "Backwater Views",
-                    "Courtyard Architecture"
-                  ],
-                  "image": "/images/real-estate-06.jpg",
-                  "tag": "Village Tranquility",
-                  "type": "Eco Modern Villa",
-                  "status": "For Sale",
-                  "areaSqFt": 4900,
-                  "description": "Immersed in Goa's idyllic hinterlands with serene backwater channels, bird sanctuaries, and organic culinary gardens."
                 }
               ]
             }

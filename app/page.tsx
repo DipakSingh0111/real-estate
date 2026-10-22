@@ -1,4 +1,3 @@
-import { GsapEffects } from "@/components/animations/GsapEffects";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { FeaturedListings } from "@/components/sections/FeaturedListings";
 import { AboutSection } from "@/components/sections/AboutSection";
@@ -15,8 +14,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#F7F4EE] flex flex-col text-[#171717]">
-      <GsapEffects />
-
       {/* Hero */}
       <HeroSection
         data={sections?.HeroBanner?.variants?.AuraEstatesHeroBanner1}

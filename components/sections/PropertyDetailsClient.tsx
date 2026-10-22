@@ -144,34 +144,12 @@ export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
       <div className="section-shell pt-8 sm:pt-10">
         <div className="section-container">
         <div className="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 mb-10">
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] max-h-[520px] w-full rounded-xl overflow-hidden bg-slate-900 mb-4">
+          <div className="relative aspect-[16/9] sm:aspect-[21/9] max-h-[520px] w-full rounded-xl overflow-hidden bg-slate-900">
             <img
               src={selectedImage}
               alt={property.title}
               className="w-full h-full object-cover transition-all duration-500"
             />
-          </div>
-
-          <div className="grid grid-cols-5 gap-3 sm:gap-4">
-            {images.slice(0, 5).map((imgUrl, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setSelectedImage(imgUrl)}
-                className={`relative aspect-[16/10] rounded-xl overflow-hidden cursor-pointer transition-all border-2 ${
-                  selectedImage === imgUrl
-                    ? "border-[#0f2e5c] ring-2 ring-[#0f2e5c]/20 scale-[1.02]"
-                    : "border-transparent opacity-80 hover:opacity-100 hover:scale-[1.01]"
-                }`}
-              >
-                <img
-                  src={imgUrl}
-                  alt={`${property.title} preview ${idx + 1}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </button>
-            ))}
           </div>
         </div>
 

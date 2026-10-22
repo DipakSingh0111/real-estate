@@ -11,7 +11,9 @@ export const Navbar: React.FC<SectionProps.Header> = ({ data }) => {
 
   const logoSrc = data?.logo?.src || "/images/Logo.png";
   const navLinks: LinkItem[] = data?.menu || [];
-  const ctaButton = data?.cta ? { text: data.cta.label, href: data.cta.href } : { text: "Contact Us", href: "/contact" };
+  const ctaButton = data?.cta
+    ? { text: data.cta.label, href: data.cta.href }
+    : { text: "Enquiry", href: "/enquiry" };
 
   useEffect(() => {
     const handleScroll = () => {

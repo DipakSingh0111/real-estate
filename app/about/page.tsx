@@ -14,7 +14,10 @@ export default function AboutPage() {
         titleHighlight="Us"
         breadcrumbs={[{ label: "About", active: true }]}
       />
-      <AboutSection data={sections.AboutUs?.variants?.AuraEstatesAboutUs1} />
+      <AboutSection
+        data={sections.AboutUs?.variants?.AuraEstatesAboutUs1}
+        showStrip={false}
+      />
       <WhyChooseUsSection data={sections.WhyChooseUs?.variants?.AuraEstatesWhyChooseUs1} />
     </main>
   );

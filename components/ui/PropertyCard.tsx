@@ -26,16 +26,11 @@ export const PropertyCard: React.FC<SectionProps.PropertyCard> = ({ property }) 
       
       <div className="p-6 flex flex-col flex-1 justify-between gap-5 bg-[#F7F4EE]/40">
         <div>
-          <div className="flex items-baseline justify-between gap-3 mb-2">
-            <Link href={propertyUrl}>
-              <h3 className="font-serif text-[#171717] text-xl sm:text-2xl leading-snug line-clamp-1 hover:text-[#B8945A] transition-colors cursor-pointer font-normal">
-                {property.title}
-              </h3>
-            </Link>
-            <span className="font-serif text-[#B8945A] text-lg sm:text-xl font-medium whitespace-nowrap">
-              {property.price}
-            </span>
-          </div>
+          <Link href={propertyUrl} className="block mb-2">
+            <h3 className="font-serif text-[#171717] text-xl sm:text-2xl leading-snug line-clamp-1 hover:text-[#B8945A] transition-colors cursor-pointer font-normal">
+              {property.title}
+            </h3>
+          </Link>
 
           
           <p className="text-sm text-[#737373] mt-2 flex items-center gap-2 font-normal">

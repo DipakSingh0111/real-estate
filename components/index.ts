@@ -11,7 +11,7 @@ export { CitySection } from "./sections/CitySection";
 export { TestimonialsSection } from "./sections/TestimonialsSection";
 export { StatsSection } from "./sections/StatsSection";
 export { ContactSection } from "./sections/ContactSection";
-export { ServicesSection } from "./sections/ServicesSection";
+export { EnquirySection } from "./sections/EnquirySection";
 export { PropertyDetailsClient } from "./sections/PropertyDetailsClient";
 export { BlogDetailsClient } from "./sections/BlogDetailsClient";
 export { AboutSection } from "./sections/AboutSection";

@@ -2,7 +2,7 @@ import React from "react";
 import type { SectionProps } from "@/types/realestate.types";
 import { Reveal } from "@/components/animations/Reveal";
 
-export const AboutSection: React.FC<SectionProps.About> = ({ data }) => {
+export const AboutSection: React.FC<SectionProps.About> = ({ data, showStrip = true }) => {
   const badge = data?.badge || "OUR STORY";
   const title = data?.heading?.main || "About Us";
   const description = data?.description || "";
@@ -57,40 +57,52 @@ export const AboutSection: React.FC<SectionProps.About> = ({ data }) => {
               </div>
             </Reveal>
 
-            <Reveal direction="right" delay={0.15} className="md:col-span-5 flex flex-col gap-6 sm:gap-8 justify-between">
-              <div className="relative aspect-[16/10] overflow-hidden border border-[#E5DFD3] group bg-[#171717]">
+            <Reveal
+              direction="right"
+              delay={0.15}
+              className={`md:col-span-5 flex flex-col ${showStrip ? "gap-6 sm:gap-8 justify-between" : "h-full"}`}
+            >
+              <div
+                className={`relative ${
+                  showStrip
+                    ? "aspect-[16/10]"
+                    : "h-full min-h-[320px] md:min-h-[460px]"
+                } overflow-hidden border border-[#E5DFD3] group bg-[#171717]`}
+              >
                 <img
                   src={secondaryCard?.image || "/images/real-estate-08.jpg"}
                   alt={secondaryCard?.imageAlt || secondaryCard?.title || "Architectural details"}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 text-[#F7F4EE]">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#B8945A] font-semibold block">
+                <div className="absolute bottom-6 left-6 right-6 text-[#F7F4EE]">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#B8945A] font-semibold block mb-1">
                     {secondaryCard?.tag}
                   </span>
-                  <span className="font-serif text-lg font-normal">
+                  <span className="font-serif text-xl sm:text-2xl font-normal block">
                     {secondaryCard?.title}
                   </span>
                 </div>
               </div>
 
-              <div className="p-7 bg-white border border-[#E5DFD3] flex items-center justify-between shadow-[0_4px_24px_rgba(23,23,23,0.04)]">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-[#737373] block mb-1">
-                    {strip?.label}
-                  </span>
-                  <span className="font-serif text-xl sm:text-2xl text-[#171717] font-normal">
-                    {strip?.title}
-                  </span>
+              {showStrip && strip && (
+                <div className="p-7 bg-white border border-[#E5DFD3] flex items-center justify-between shadow-[0_4px_24px_rgba(23,23,23,0.04)]">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#737373] block mb-1">
+                      {strip?.label}
+                    </span>
+                    <span className="font-serif text-xl sm:text-2xl text-[#171717] font-normal">
+                      {strip?.title}
+                    </span>
+                  </div>
+                  <a
+                    href={stripCtaLink}
+                    className="px-5 py-3 bg-[#171717] hover:bg-[#B8945A] text-[#F7F4EE] hover:text-[#171717] text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shrink-0 cursor-pointer"
+                  >
+                    {stripCtaText}
+                  </a>
                 </div>
-                <a
-                  href={stripCtaLink}
-                  className="px-5 py-3 bg-[#171717] hover:bg-[#B8945A] text-[#F7F4EE] hover:text-[#171717] text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shrink-0 cursor-pointer"
-                >
-                  {stripCtaText}
-                </a>
-              </div>
+              )}
             </Reveal>
           </div>
       </div>

@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { getEstateSections } from "@/lib/estate";
+import { playfair, plusJakarta } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,16 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className="antialiased selection:bg-[#B8945A]/20 selection:text-[#171717]"
+      className={`${playfair.variable} ${plusJakarta.variable} antialiased selection:bg-[#B8945A]/20 selection:text-[#171717]`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="min-h-screen flex flex-col bg-[#F7F4EE] text-[#171717] font-sans">
         <SmoothScroll>
           <Suspense fallback={null}>

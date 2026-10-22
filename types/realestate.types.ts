@@ -493,7 +493,7 @@ export namespace SectionProps {
     ctaText?: string;
   };
   export type Stats = { data?: StatsData };
-  export type About = { data?: AboutUsData };
+  export type About = { data?: AboutUsData; showStrip?: boolean };
   export type Services = { data?: ServicesData };
   export type WhyChooseUs = { data?: WhyChooseUsData };
   export type Testimonials = { data?: TestimonialsData };
