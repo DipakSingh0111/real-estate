@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import type { SectionProps, TestimonialReviewItem } from "@/types/realestate.types";
+import { Reveal } from "@/components/animations/Reveal";
 
 export const TestimonialsSection: React.FC<SectionProps.Testimonials> = ({ data }) => {
   const testimonials: TestimonialReviewItem[] = data?.list || [];
@@ -48,8 +49,8 @@ export const TestimonialsSection: React.FC<SectionProps.Testimonials> = ({ data 
   }, [isPaused, itemsPerView, testimonials.length, handleNext]);
 
   return (
-    <section className="bg-[#F7F4EE] pt-14 pb-12 sm:pt-16 sm:pb-14 px-6 sm:px-8 lg:px-12 border-t border-[#E5DFD3] select-none">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-shell bg-[#F7F4EE] pt-14 pb-12 sm:pt-16 sm:pb-14 border-t border-[#E5DFD3] select-none">
+      <div className="section-container">
         
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-14 gap-6">
           <div>
@@ -85,14 +86,15 @@ export const TestimonialsSection: React.FC<SectionProps.Testimonials> = ({ data 
         </div>
 
         
-        <div
-          ref={sliderRef}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          className="overflow-hidden -mx-3 px-3 py-4"
-        >
+        <Reveal direction="right" delay={0.15}>
           <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            ref={sliderRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            className="overflow-hidden -mx-3 px-3 py-4"
+          >
+            <div
+              className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
             style={{
               transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
             }}
@@ -151,8 +153,8 @@ export const TestimonialsSection: React.FC<SectionProps.Testimonials> = ({ data 
             ))}
           </div>
         </div>
+        </Reveal>
 
-        
         {maxIndex > 0 && (
           <div className="flex items-center justify-center gap-2 mt-8">
             {Array.from({ length: maxIndex + 1 }).map((_, index) => (

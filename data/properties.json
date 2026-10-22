@@ -54,7 +54,8 @@
               "companyName": "AURA ESTATES",
               "logo": {
                 "src": "/images/Logo.png",
-                "light": "/images/Logo.png"
+                "light": "/images/Footer_logo.png",
+                "alt": "DreamHome"
               },
               "tagline": "AURA ESTATES",
               "contact": {
@@ -92,7 +93,8 @@
             "AuraEstatesHeader1": {
               "logo": {
                 "src": "/images/Logo.png",
-                "light": "/images/Logo.png"
+                "light": "/images/Footer_logo.png",
+                "alt": "DreamHome"
               },
               "menu": [
                 {

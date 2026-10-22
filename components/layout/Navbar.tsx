@@ -43,7 +43,7 @@ export const Navbar: React.FC<SectionProps.Header> = ({ data }) => {
               <img
                 src={logoSrc}
                 alt="Aura Estates Logo"
-                className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                className="brand-logo group-hover:scale-105"
               />
             </a>
           </div>
@@ -142,8 +142,8 @@ export const Navbar: React.FC<SectionProps.Header> = ({ data }) => {
 
       
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#171717] border-b border-[#262626] px-6 py-6 shadow-2xl animate-fadeIn">
-          <nav className="flex flex-col space-y-3">
+        <div className="md:hidden bg-[#171717] border-b border-[#262626] section-shell py-6 shadow-2xl animate-fadeIn">
+          <nav className="section-container flex flex-col space-y-3">
             {navLinks.map((link) => {
               const isActive =
                 (link.href === "/" && pathname === "/") ||

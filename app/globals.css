@@ -11,6 +11,16 @@
   --color-muted-text: #737373;
 }
 
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
 body {
   background-color: #F7F4EE;
   color: #171717;
@@ -58,4 +68,26 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Align page sections with navbar logo (shell + inner pill padding) */
+.section-shell {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.section-container {
+  @apply mx-auto w-full max-w-7xl px-6 sm:px-8;
+}
+
+/* Navbar logo — matched to footer visible size */
+.brand-logo {
+  @apply h-7 sm:h-8 md:h-9 w-auto object-contain object-left transition-transform duration-500;
+}
+
+/*
+  Footer PNG has more canvas padding than the navbar asset,
+  so it needs a taller box to match the visible logo size.
+*/
+.brand-logo-footer {
+  @apply h-12 sm:h-[3.25rem] md:h-14 w-auto object-contain object-left transition-transform duration-500;
 }

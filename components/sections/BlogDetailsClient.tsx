@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BreadcrumbHeader } from "@/components/ui/BreadcrumbHeader";
+import { smoothScrollTo } from "@/components/ui/SmoothScroll";
 import type { SectionProps, BlogPostItem } from "@/types/realestate.types";
 
 export const BlogDetailsClient: React.FC<SectionProps.BlogDetails> = ({
@@ -20,14 +21,14 @@ export const BlogDetailsClient: React.FC<SectionProps.BlogDetails> = ({
     if (matched) {
       setCurrentPost(matched);
       window.history.pushState(null, "", `/blog/${matched.slug || matched.id}`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      smoothScrollTo(0);
     }
   };
 
   const handleSelectPost = (post: BlogPostItem) => {
     setCurrentPost(post);
     window.history.pushState(null, "", `/blog/${post.slug || post.id}`);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    smoothScrollTo(0);
   };
 
   const badge = config?.badge || "Editorial Intelligence";
@@ -51,7 +52,8 @@ export const BlogDetailsClient: React.FC<SectionProps.BlogDetails> = ({
         ]}
       />
 
-      <article className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 sm:pt-14 pb-20">
+      <article className="section-shell pt-10 sm:pt-14 pb-20">
+        <div className="section-container">
         <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] mb-12 sm:mb-16 overflow-hidden bg-[#171717] border border-[#E5DFD3]">
           <Image
             src={currentPost.image}
@@ -219,6 +221,7 @@ export const BlogDetailsClient: React.FC<SectionProps.BlogDetails> = ({
               </div>
             </div>
           </aside>
+        </div>
         </div>
       </article>
     </main>

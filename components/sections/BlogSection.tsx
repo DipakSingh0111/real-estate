@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { SectionProps, BlogPostItem } from "@/types/realestate.types";
+import { Reveal } from "@/components/animations/Reveal";
 
 export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) => {
   const posts = (data?.list || []).slice(0, limit);
@@ -22,8 +23,8 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
   const secondaryBadge03 = blogConfig?.secondaryBadge03 || "03 • PRIVATE WEALTH";
 
   return (
-    <section id="journal" className="relative bg-[#F7F4EE] pt-10 pb-16 sm:pt-12 sm:pb-20 border-t border-[#E5DFD3]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="journal" className="section-shell relative bg-[#F7F4EE] pt-10 pb-16 sm:pt-12 sm:pb-20 border-t border-[#E5DFD3]">
+      <div className="section-container">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
           <div>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-[#171717] font-normal tracking-tight">
@@ -41,7 +42,7 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           {featuredPost && (
-            <div className="lg:col-span-7 flex flex-col">
+            <Reveal direction="left" className="lg:col-span-7 flex flex-col">
               <Link
                 href={`/blog/${featuredPost.slug || featuredPost.id}`}
                 className="group flex flex-col flex-1 bg-white border border-[#E5DFD3] shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
@@ -90,7 +91,7 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
                   </div>
                 </div>
               </Link>
-            </div>
+            </Reveal>
           )}
 
           <div className="lg:col-span-5 flex flex-col justify-between gap-6 sm:gap-7">
@@ -98,7 +99,7 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
               const badgeLabel = idx === 0 ? secondaryBadge02 : secondaryBadge03;
 
               return (
-                <div key={post.id} className="flex flex-col flex-1">
+                <Reveal key={post.id} direction="right" delay={idx * 0.15} className="flex flex-col flex-1">
                   <Link
                     href={`/blog/${post.slug || post.id}`}
                     className="group flex flex-col flex-1 bg-white border border-[#E5DFD3] shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
@@ -140,7 +141,7 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
                       </div>
                     </div>
                   </Link>
-                </div>
+                </Reveal>
               );
             })}
           </div>

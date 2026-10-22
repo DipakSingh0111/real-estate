@@ -15,8 +15,8 @@ export const FaqSection: React.FC<SectionProps.Faq> = ({ data }) => {
   };
 
   return (
-    <section id="faq" className="relative bg-[#F7F4EE] py-16 sm:py-20 border-t border-[#E5DFD3]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="faq" className="section-shell relative bg-[#F7F4EE] py-16 sm:py-20 border-t border-[#E5DFD3]">
+      <div className="section-container">
         
         <Reveal className="mb-12 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal tracking-tight whitespace-nowrap">

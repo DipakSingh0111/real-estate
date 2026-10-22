@@ -1,70 +1,109 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import type Lenis from "lenis";
+import { ReactLenis, type LenisRef } from "lenis/react";
+import "lenis/dist/lenis.css";
 
-/**
- * Ultra-smooth inertia momentum scrolling provider
- * Zero dependencies, works natively on top of requestAnimationFrame
- */
-export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const LENIS_KEY = "__auraLenis" as const;
+
+type AuraWindow = Window & {
+  [LENIS_KEY]?: Lenis;
+};
+
+const lenisOptions = {
+  lerp: 0.075,
+  duration: 1.2,
+  smoothWheel: true,
+  wheelMultiplier: 0.9,
+  touchMultiplier: 1.2,
+  syncTouch: false,
+  autoRaf: true,
+  anchors: true,
+};
+
+function getLenis(): Lenis | undefined {
+  if (typeof window === "undefined") return undefined;
+  return (window as AuraWindow)[LENIS_KEY];
+}
+
+/** Smooth scroll helper — uses Lenis when available */
+export function smoothScrollTo(
+  target: number | string | HTMLElement,
+  options?: { offset?: number; duration?: number; immediate?: boolean }
+) {
+  if (typeof window === "undefined") return;
+
+  const lenis = getLenis();
+  if (lenis) {
+    lenis.scrollTo(target, {
+      offset: options?.offset ?? 0,
+      duration: options?.duration ?? 1.2,
+      immediate: options?.immediate ?? false,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    return;
+  }
+
+  const top =
+    typeof target === "number"
+      ? target
+      : typeof target === "string"
+        ? (document.querySelector(target)?.getBoundingClientRect().top ?? 0) +
+          window.scrollY
+        : target.getBoundingClientRect().top + window.scrollY;
+
+  window.scrollTo({
+    top: top + (options?.offset ?? 0),
+    behavior: options?.immediate ? "auto" : "smooth",
+  });
+}
+
+export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const lenisRef = useRef<LenisRef>(null);
+
   useEffect(() => {
-    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    if (isTouch) return;
+    let attached = false;
 
-    let currentY = window.scrollY;
-    let targetY = window.scrollY;
-    let isRunning = false;
-    const ease = 0.085; // Luxurious damping factor
+    const bind = () => {
+      const lenis = lenisRef.current?.lenis;
+      if (!lenis) return false;
 
-    const onWheel = (e: WheelEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (target?.closest?.("textarea, input, [data-lenis-prevent], .no-smooth-scroll")) {
-        return;
+      (window as AuraWindow)[LENIS_KEY] = lenis;
+
+      const ScrollTrigger = (window as Window & { ScrollTrigger?: any })
+        .ScrollTrigger;
+      if (ScrollTrigger && !attached) {
+        lenis.on("scroll", ScrollTrigger.update);
+        ScrollTrigger.refresh();
+        attached = true;
       }
-
-      e.preventDefault();
-      const maxScroll = Math.max(
-        0,
-        document.documentElement.scrollHeight - window.innerHeight
-      );
-      targetY += e.deltaY * 0.9;
-      targetY = Math.max(0, Math.min(targetY, maxScroll));
-
-      if (!isRunning) {
-        isRunning = true;
-        requestAnimationFrame(updateScroll);
-      }
+      return true;
     };
 
-    const updateScroll = () => {
-      const diff = targetY - currentY;
-      currentY += diff * ease;
-
-      if (Math.abs(diff) > 0.4) {
-        window.scrollTo(0, Math.round(currentY));
-        requestAnimationFrame(updateScroll);
-      } else {
-        currentY = targetY;
-        window.scrollTo(0, Math.round(currentY));
-        isRunning = false;
-      }
-    };
-
-    const onScroll = () => {
-      if (!isRunning) {
-        currentY = window.scrollY;
-        targetY = window.scrollY;
-      }
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: false });
-    window.addEventListener("scroll", onScroll, { passive: true });
+    bind();
+    const timer = window.setTimeout(bind, 400);
 
     return () => {
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("scroll", onScroll);
+      window.clearTimeout(timer);
+      const lenis = lenisRef.current?.lenis;
+      const ScrollTrigger = (window as Window & { ScrollTrigger?: any })
+        .ScrollTrigger;
+      if (lenis && ScrollTrigger) {
+        lenis.off("scroll", ScrollTrigger.update);
+      }
+      const w = window as AuraWindow;
+      if (w[LENIS_KEY] === lenis) {
+        w[LENIS_KEY] = undefined;
+      }
     };
   }, []);
 
-  return <>{children}</>;
+  return (
+    <ReactLenis root ref={lenisRef} options={lenisOptions}>
+      {children}
+    </ReactLenis>
+  );
 };

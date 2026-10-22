@@ -4,11 +4,20 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { SectionProps } from "@/types/realestate.types";
+import type { ImageItem, SectionProps } from "@/types/realestate.types";
 
-import { FaInstagram, FaLinkedinIn, FaFacebookF, FaYoutube } from "react-icons/fa6";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaFacebookF,
+  FaYoutube,
+} from "react-icons/fa6";
 
-export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
+export const Footer: React.FC<
+  SectionProps.Footer & { logo?: ImageItem }
+> = ({ data, logo }) => {
+  const footerLogoSrc =
+    logo?.light || logo?.src || "/images/Footer_logo.png";
   const pathname = usePathname();
 
   const navigation = data?.navigation || [];
@@ -18,7 +27,8 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
     "India's premier luxury real estate advisory. Curating distinctive palazzos, sky mansions, and private sanctuaries for the world's most discerning families.";
   const socials = data?.socials || [];
   const gallery = data?.gallery || [];
-  const copyright = data?.copyright || "Copyright © 2026 Aura Estates. All Rights Reserved.";
+  const copyright =
+    data?.copyright || "Copyright © 2026 Aura Estates. All Rights Reserved.";
 
   const getSocialIcon = (name: string) => {
     const n = (name || "").toLowerCase();
@@ -35,19 +45,15 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
   };
 
   return (
-    <footer className="relative bg-[#EFEAE1] text-[#171717] pt-14 pb-8 border-t border-[#DED7CA] select-none">
-      <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12">
-        
-        
+    <footer className="relative bg-[#EFEAE1] text-[#171717] pt-14 pb-8 border-t border-[#DED7CA] select-none section-shell">
+      <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[#DED7CA] items-start">
-          
-          
           <div className="lg:col-span-4 space-y-5 pr-0 lg:pr-6">
-            <Link href="/" className="inline-block group cursor-pointer">
+            <Link href="/" className="inline-flex group cursor-pointer">
               <img
-                src="/images/Logo.png"
-                alt="Aura Estates Logo"
-                className="h-10 sm:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                src={footerLogoSrc}
+                alt={logo?.alt || "Aura Estates Logo"}
+                className="brand-logo-footer group-hover:scale-105"
               />
             </Link>
 
@@ -55,7 +61,6 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
               {description}
             </p>
 
-            
             {socials.length > 0 && (
               <div className="flex items-center gap-3 pt-2">
                 {socials.map((s, idx) => (
@@ -74,7 +79,6 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
             )}
           </div>
 
-          
           <div className="lg:col-span-2 space-y-4">
             <div className="border-b border-[#DED7CA] pb-2">
               <h4 className="text-[13px] sm:text-sm uppercase tracking-[0.25em] text-[#B8945A] font-semibold">
@@ -99,7 +103,9 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
                           : "text-[#555555] hover:text-[#171717] hover:translate-x-1"
                       }`}
                     >
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#B8945A]" />}
+                      {isActive && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#B8945A]" />
+                      )}
                       <span>{label}</span>
                     </Link>
                   </li>
@@ -108,7 +114,6 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
             </ul>
           </div>
 
-          
           <div className="lg:col-span-3 space-y-4">
             <div className="border-b border-[#DED7CA] pb-2">
               <h4 className="text-[13px] sm:text-sm uppercase tracking-[0.25em] text-[#B8945A] font-semibold">
@@ -132,7 +137,6 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
             </ul>
           </div>
 
-          
           <div className="lg:col-span-3 space-y-4">
             <div className="border-b border-[#DED7CA] pb-2">
               <h4 className="text-[13px] sm:text-sm uppercase tracking-[0.25em] text-[#B8945A] font-semibold">
@@ -140,7 +144,6 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
               </h4>
             </div>
 
-            
             <div className="grid grid-cols-2 gap-2.5">
               {gallery.map((item, i) => (
                 <Link
@@ -164,16 +167,13 @@ export const Footer: React.FC<SectionProps.Footer> = ({ data }) => {
               ))}
             </div>
           </div>
-
         </div>
 
-        
         <div className="pt-6 flex items-center justify-center text-center">
           <p className="text-sm sm:text-[15px] text-[#666666] font-normal tracking-wide">
             {copyright}
           </p>
         </div>
-
       </div>
     </footer>
   );

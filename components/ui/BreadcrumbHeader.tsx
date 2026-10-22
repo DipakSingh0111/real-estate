@@ -12,7 +12,7 @@ export const BreadcrumbHeader: React.FC<BreadcrumbHeaderProps> = ({
   backgroundImage = (estateData as any).company?.breadcrumbBackgroundImage || "/images/hero-banner.png",
 }) => {
   return (
-    <section className="relative min-h-[340px] sm:min-h-[380px] lg:min-h-[420px] flex items-center pt-32 pb-16 px-6 sm:px-8 lg:px-12 select-none overflow-hidden bg-[#171717] border-b border-[#262626]">
+    <section className="section-shell relative min-h-[340px] sm:min-h-[380px] lg:min-h-[420px] flex items-center pt-32 pb-16 select-none overflow-hidden bg-[#171717] border-b border-[#262626]">
       
       <div
         className="absolute inset-0 bg-cover bg-center z-0 scale-100 opacity-90"
@@ -30,7 +30,7 @@ export const BreadcrumbHeader: React.FC<BreadcrumbHeaderProps> = ({
       <div className="absolute inset-x-0 bottom-0 h-16 z-[1] bg-gradient-to-t from-[#171717]/40 to-transparent pointer-events-none" />
 
       
-      <div className="relative z-10 max-w-7xl mx-auto w-full">
+      <div className="relative z-10 section-container">
 
         
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#F7F4EE] leading-[1.12]">

@@ -86,9 +86,9 @@ export const CitySection: React.FC<SectionProps.Cities> = ({ data }) => {
   return (
     <section
       id="cities"
-      className="relative bg-[#F7F4EE] pt-14 pb-8 sm:pt-20 sm:pb-10 px-6 sm:px-8 lg:px-12 border-t border-[#E5DFD3]"
+      className="section-shell relative bg-[#F7F4EE] pt-14 pb-8 sm:pt-20 sm:pb-10 border-t border-[#E5DFD3]"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="section-container">
         
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
           <span className="text-[11px] uppercase tracking-[0.3em] font-semibold text-[#B8945A] block mb-3">

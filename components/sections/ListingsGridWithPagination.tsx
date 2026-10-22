@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import type { SectionProps } from "@/types/realestate.types";
 import { PropertyCard } from "@/components/ui/PropertyCard";
+import { RevealCard } from "@/components/animations/Reveal";
+import { smoothScrollTo } from "@/components/ui/SmoothScroll";
 
 export const ListingsGridWithPagination: React.FC<SectionProps.ListingsGrid> = ({
   listings,
@@ -55,7 +57,7 @@ export const ListingsGridWithPagination: React.FC<SectionProps.ListingsGrid> = (
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 380, behavior: "smooth" });
+    smoothScrollTo(380);
   };
 
   const selectedBadge = config?.selectedBadge || "City Selected Portfolio";
@@ -75,7 +77,8 @@ export const ListingsGridWithPagination: React.FC<SectionProps.ListingsGrid> = (
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 sm:py-16">
+    <section className="section-shell py-14 sm:py-16">
+      <div className="section-container">
       <div className="pb-8 mb-12 border-b border-[#E5DFD3]">
         <div>
           <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[#B8945A] block mb-2">
@@ -89,10 +92,10 @@ export const ListingsGridWithPagination: React.FC<SectionProps.ListingsGrid> = (
 
       {currentListings.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentListings.map((item) => (
-            <div key={item.id}>
+          {currentListings.map((item, idx) => (
+            <RevealCard key={item.id} index={idx}>
               <PropertyCard property={item} />
-            </div>
+            </RevealCard>
           ))}
         </div>
       ) : (
@@ -154,6 +157,7 @@ export const ListingsGridWithPagination: React.FC<SectionProps.ListingsGrid> = (
           </button>
         </div>
       )}
+      </div>
     </section>
   );
 };

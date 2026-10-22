@@ -57,9 +57,9 @@ export const StatsSection: React.FC<SectionProps.Stats> = ({ data }) => {
   return (
     <section
       ref={sectionRef}
-      className="pt-8 pb-12 sm:pt-10 sm:pb-14 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE] border-t border-[#E5DFD3]"
+      className="section-shell pt-8 pb-12 sm:pt-10 sm:pb-14 bg-[#F7F4EE] border-t border-[#E5DFD3]"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="section-container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
           {statsList.map((stat: StatItem) => (
             <div key={stat.id} className="flex flex-col">

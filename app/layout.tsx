@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className="h-full antialiased selection:bg-[#B8945A]/20 selection:text-[#171717]"
+      className="antialiased selection:bg-[#B8945A]/20 selection:text-[#171717]"
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,13 +29,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#F7F4EE] text-[#171717] font-sans">
+      <body className="min-h-screen flex flex-col bg-[#F7F4EE] text-[#171717] font-sans">
         <SmoothScroll>
           <Suspense fallback={null}>
             <Navbar data={sections.Header?.variants?.AuraEstatesHeader1} />
           </Suspense>
           {children}
-          <Footer data={sections.Footer?.variants?.AuraEstatesFooter1} />
+          <Footer
+            data={sections.Footer?.variants?.AuraEstatesFooter1}
+            logo={sections.Header?.variants?.AuraEstatesHeader1?.logo}
+          />
         </SmoothScroll>
       </body>
     </html>

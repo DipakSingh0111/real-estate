@@ -44,8 +44,8 @@ export const ContactSection: React.FC<SectionProps.Contact> = ({ data }) => {
   };
 
   return (
-    <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE]">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-shell py-16 sm:py-20 bg-[#F7F4EE]">
+      <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           <div className="lg:col-span-5 space-y-8">

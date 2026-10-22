@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import type { SectionProps, ServiceCardItem } from "@/types/realestate.types";
+import { RevealCard } from "@/components/animations/Reveal";
 
 export const ServicesSection: React.FC<SectionProps.Services> = ({ data }) => {
   const items = data?.list || [];
@@ -10,8 +11,8 @@ export const ServicesSection: React.FC<SectionProps.Services> = ({ data }) => {
   const title = data?.heading?.main || "Our Services";
 
   return (
-    <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE]">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-shell py-16 sm:py-20 bg-[#F7F4EE]">
+      <div className="section-container">
         
         <div className="mb-12 pb-6 border-b border-[#E5DFD3]">
           <div className="flex items-center gap-3 mb-2">
@@ -28,11 +29,11 @@ export const ServicesSection: React.FC<SectionProps.Services> = ({ data }) => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {items.map((item: ServiceCardItem, idx: number) => (
-            <div
+            <RevealCard
               key={item.id || idx}
+              index={idx}
               className="bg-white border border-[#E5DFD3] hover:border-[#B8945A] hover:shadow-[0_16px_36px_rgba(184,148,90,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
             >
-              
               <div className="relative aspect-[16/12] overflow-hidden bg-[#171717]">
                 <img
                   src={item.image || "/images/modern-buildings.jpg"}
@@ -49,7 +50,6 @@ export const ServicesSection: React.FC<SectionProps.Services> = ({ data }) => {
                 </div>
               </div>
 
-              
               <div className="p-6 flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="font-serif text-xl sm:text-2xl text-[#171717] font-normal mb-2 group-hover:text-[#B8945A] transition-colors leading-snug">
@@ -70,7 +70,7 @@ export const ServicesSection: React.FC<SectionProps.Services> = ({ data }) => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </RevealCard>
           ))}
         </div>
       </div>

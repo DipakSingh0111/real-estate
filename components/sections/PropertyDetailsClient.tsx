@@ -141,7 +141,8 @@ export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
         ]}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10">
+      <div className="section-shell pt-8 sm:pt-10">
+        <div className="section-container">
         <div className="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 mb-10">
           <div className="relative aspect-[16/9] sm:aspect-[21/9] max-h-[520px] w-full rounded-xl overflow-hidden bg-slate-900 mb-4">
             <img
@@ -412,6 +413,7 @@ export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
               )}
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

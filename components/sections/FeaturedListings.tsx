@@ -22,9 +22,9 @@ export const FeaturedListings: React.FC<SectionProps.Listings> = ({ data }) => {
   return (
     <section
       id="listings"
-      className="bg-[#F7F4EE] pt-14 pb-8 sm:pt-16 sm:pb-10 px-6 sm:px-8 lg:px-12 border-t border-[#E5DFD3]"
+      className="section-shell bg-[#F7F4EE] pt-14 pb-8 sm:pt-16 sm:pb-10 border-t border-[#E5DFD3]"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="section-container">
         <Reveal className="text-center mb-12 sm:mb-14">
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#171717] tracking-tight">
             {title}

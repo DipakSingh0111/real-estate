@@ -13,8 +13,8 @@ export const AboutSection: React.FC<SectionProps.About> = ({ data }) => {
   const stripCtaText = strip?.cta?.label || "Explore";
 
   return (
-    <section className="pt-8 pb-14 sm:pt-10 sm:pb-16 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE] border-t border-[#E5DFD3]">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-shell pt-8 pb-14 sm:pt-10 sm:pb-16 bg-[#F7F4EE] border-t border-[#E5DFD3]">
+      <div className="section-container">
         
         <Reveal className="mb-12 sm:mb-14 pb-6 border-b border-[#E5DFD3]">
           <div className="flex items-center gap-3 mb-2">
@@ -32,33 +32,32 @@ export const AboutSection: React.FC<SectionProps.About> = ({ data }) => {
         </Reveal>
 
         
-        <Reveal yOffset={40} delay={0.15}>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-stretch">
-            
-            <div className="md:col-span-7 relative aspect-[16/11] md:aspect-auto md:min-h-[460px] overflow-hidden border border-[#E5DFD3] group bg-[#171717]">
-              <img
-                src={primaryCard?.image || "/images/modern-buildings.jpg"}
-                alt={primaryCard?.imageAlt || primaryCard?.title || "Aura Estates"}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/80 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-[#F7F4EE]">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-[#B8945A] font-semibold block mb-1">
-                    {primaryCard?.tag}
+            <Reveal direction="left" className="md:col-span-7 flex flex-col">
+              <div className="relative aspect-[16/11] md:aspect-auto md:min-h-[460px] h-full overflow-hidden border border-[#E5DFD3] group bg-[#171717]">
+                <img
+                  src={primaryCard?.image || "/images/modern-buildings.jpg"}
+                  alt={primaryCard?.imageAlt || primaryCard?.title || "Aura Estates"}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-[#F7F4EE]">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#B8945A] font-semibold block mb-1">
+                      {primaryCard?.tag}
+                    </span>
+                    <h3 className="font-serif text-2xl font-normal text-[#F7F4EE]">
+                      {primaryCard?.title}
+                    </h3>
+                  </div>
+                  <span className="font-serif text-3xl text-[#B8945A] font-light">
+                    {primaryCard?.statValue}
                   </span>
-                  <h3 className="font-serif text-2xl font-normal text-[#F7F4EE]">
-                    {primaryCard?.title}
-                  </h3>
                 </div>
-                <span className="font-serif text-3xl text-[#B8945A] font-light">
-                  {primaryCard?.statValue}
-                </span>
               </div>
-            </div>
+            </Reveal>
 
-            
-            <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8">
+            <Reveal direction="right" delay={0.15} className="md:col-span-5 flex flex-col gap-6 sm:gap-8 justify-between">
               <div className="relative aspect-[16/10] overflow-hidden border border-[#E5DFD3] group bg-[#171717]">
                 <img
                   src={secondaryCard?.image || "/images/real-estate-08.jpg"}
@@ -76,7 +75,6 @@ export const AboutSection: React.FC<SectionProps.About> = ({ data }) => {
                 </div>
               </div>
 
-              
               <div className="p-7 bg-white border border-[#E5DFD3] flex items-center justify-between shadow-[0_4px_24px_rgba(23,23,23,0.04)]">
                 <div>
                   <span className="text-[10px] uppercase tracking-[0.25em] text-[#737373] block mb-1">
@@ -88,14 +86,13 @@ export const AboutSection: React.FC<SectionProps.About> = ({ data }) => {
                 </div>
                 <a
                   href={stripCtaLink}
-                  className="px-5 py-3 bg-[#171717] hover:bg-[#B8945A] text-[#F7F4EE] hover:text-[#171717] text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shrink-0"
+                  className="px-5 py-3 bg-[#171717] hover:bg-[#B8945A] text-[#F7F4EE] hover:text-[#171717] text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shrink-0 cursor-pointer"
                 >
                   {stripCtaText}
                 </a>
               </div>
-            </div>
+            </Reveal>
           </div>
-        </Reveal>
       </div>
     </section>
   );

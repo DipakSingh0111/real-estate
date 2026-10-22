@@ -2,25 +2,26 @@
 
 import React from "react";
 import type { SectionProps, WhyChooseUsItem } from "@/types/realestate.types";
-import { Reveal, RevealStagger, RevealChild } from "@/components/animations/Reveal";
+import { Reveal, RevealCard } from "@/components/animations/Reveal";
 
 export const WhyChooseUsSection: React.FC<SectionProps.WhyChooseUs> = ({ data }) => {
   const title = data?.heading?.main || "Why Choose US";
   const luxuryPillars = data?.list || [];
 
   return (
-    <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE] text-[#171717] border-t border-[#E5DFD3]">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-shell py-16 sm:py-20 bg-[#F7F4EE] text-[#171717] border-t border-[#E5DFD3]">
+      <div className="section-container">
         <Reveal className="mb-12 sm:mb-14 text-center sm:text-left">
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#171717] tracking-tight leading-[1.08]">
             {title}
           </h2>
         </Reveal>
 
-        <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {luxuryPillars.map((item: WhyChooseUsItem) => (
-            <RevealChild
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          {luxuryPillars.map((item: WhyChooseUsItem, idx: number) => (
+            <RevealCard
               key={item.number}
+              index={idx}
               className="group flex flex-col justify-between"
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-[#171717] mb-6 border border-[#E5DFD3] group-hover:border-[#B8945A]/60 shadow-[0_8px_30px_rgba(23,23,23,0.06)] transition-all">
@@ -43,9 +44,9 @@ export const WhyChooseUsSection: React.FC<SectionProps.WhyChooseUs> = ({ data })
                   {item.tagline}
                 </p>
               </div>
-            </RevealChild>
+            </RevealCard>
           ))}
-        </RevealStagger>
+        </div>
       </div>
     </section>
   );
