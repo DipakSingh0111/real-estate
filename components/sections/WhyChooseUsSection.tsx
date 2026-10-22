@@ -1,27 +1,24 @@
 "use client";
 
 import React from "react";
-import defaultData from "@/data/properties.json";
+import type { SectionProps, WhyChooseUsItem } from "@/types/realestate.types";
 import { Reveal, RevealStagger, RevealChild } from "@/components/animations/Reveal";
 
-export const WhyChooseUsSection: React.FC = () => {
-  const whyChooseUsData = (defaultData as any).whyChooseUs || {
-    title: "Why Choose",
-    pillars: [],
-  };
-  const luxuryPillars = whyChooseUsData.pillars || [];
+export const WhyChooseUsSection: React.FC<SectionProps.WhyChooseUs> = ({ data }) => {
+  const title = data?.heading?.main || "Why Choose US";
+  const luxuryPillars = data?.list || [];
 
   return (
     <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE] text-[#171717] border-t border-[#E5DFD3]">
       <div className="max-w-7xl mx-auto">
         <Reveal className="mb-12 sm:mb-14 text-center sm:text-left">
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#171717] tracking-tight leading-[1.08]">
-            {whyChooseUsData.title || "Why Choose"}
+            {title}
           </h2>
         </Reveal>
 
         <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {luxuryPillars.map((item: any) => (
+          {luxuryPillars.map((item: WhyChooseUsItem) => (
             <RevealChild
               key={item.number}
               className="group flex flex-col justify-between"

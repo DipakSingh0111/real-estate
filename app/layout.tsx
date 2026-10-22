@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { getEstateSections } from "@/lib/estate";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const sections = getEstateSections();
+
   return (
     <html
       lang="en"
@@ -26,11 +30,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#F7F4EE] text-[#171717] font-sans">
-        <Suspense fallback={null}>
-          <Navbar />
-        </Suspense>
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <Suspense fallback={null}>
+            <Navbar data={sections.Header?.variants?.AuraEstatesHeader1} />
+          </Suspense>
+          {children}
+          <Footer data={sections.Footer?.variants?.AuraEstatesFooter1} />
+        </SmoothScroll>
       </body>
     </html>
   );

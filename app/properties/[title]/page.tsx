@@ -1,20 +1,21 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PropertyListing } from "@/types/estate";
+import type { PropertyListingItem } from "@/types/realestate.types";
 import { PropertyDetailsClient } from "@/components/sections/PropertyDetailsClient";
 import estateJsonData from "@/data/properties.json";
+import { getEstateSections } from "@/lib/estate";
 
-// Direct Property Details Data from properties.json
-export const propertiesDetailsData: PropertyListing[] = (estateJsonData?.featuredListings?.items || []) as unknown as PropertyListing[];
+// Direct Property Details Data from properties.json (not exported so Next.js doesn't treat as page export)
+const propertiesDetailsData: PropertyListingItem[] = (
+  getEstateSections()?.Listings?.variants?.AuraEstatesListings1?.list ||
+  (estateJsonData as any)?.featuredListings?.items ||
+  []
+) as unknown as PropertyListingItem[];
 
 interface PropertyPageProps {
-  params:
-    | Promise<{
-        title: string;
-      }>
-    | {
-        title: string;
-      };
+  params: Promise<{
+    title: string;
+  }>;
 }
 
 function matchesTitle(propertyTitle: string, inputTitle: string): boolean {
@@ -36,7 +37,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PropertyPageProps): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
+  const resolvedParams = await params;
   const rawTitle = resolvedParams?.title || "";
 
   const property = propertiesDetailsData.find((item) =>
@@ -71,7 +72,7 @@ export async function generateMetadata({
 }
 
 export default async function PropertyPage({ params }: PropertyPageProps) {
-  const resolvedParams = await Promise.resolve(params);
+  const resolvedParams = await params;
   const rawTitle = resolvedParams?.title || "";
 
   // Find property by Title directly from local array
@@ -93,11 +94,15 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
     (item) => item.id !== property.id,
   );
 
+  const listingsSection = getEstateSections()?.Listings?.variants?.AuraEstatesListings1;
+  const config = listingsSection?.propertyDetails;
+
   return (
     <main>
       <PropertyDetailsClient
         property={property}
         similarProperties={similarProperties}
+        config={config}
       />
     </main>
   );

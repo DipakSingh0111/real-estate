@@ -1,29 +1,33 @@
 "use client";
 
 import React, { useState } from "react";
-import defaultData from "@/data/properties.json";
+import type { SectionProps, ContactInfoItem } from "@/types/realestate.types";
 
-interface ChannelItem {
-  id: string;
-  title: string;
-  detail: string;
-}
-
-interface ContactSectionProps {
-  badge?: string;
-  title?: string;
-  description?: string;
-  channels?: ChannelItem[];
-  formConfig?: any;
-}
-
-export const ContactSection: React.FC<ContactSectionProps> = ({
-  badge = (defaultData as any).contactSection?.badge || "Confidential Inquiry",
-  title = (defaultData as any).contactSection?.title || "Connect With Our Principals",
-  description = (defaultData as any).contactSection?.description || "Whether considering private portfolio acquisition, off-market estate disposition, or cross-border syndication, our senior directors ensure complete discretion.",
-  channels = (defaultData as any).contactSection?.channels || [],
-  formConfig = (defaultData as any).contactSection?.form || {},
-}) => {
+export const ContactSection: React.FC<SectionProps.Contact> = ({ data }) => {
+  const badge = data?.badge || "Confidential Inquiry";
+  const title = data?.heading?.main || "Connect With Our Principals";
+  const description = data?.description || "Whether considering private portfolio acquisition, off-market estate disposition, or cross-border syndication, our senior directors ensure complete discretion.";
+  const channels = data?.list || [];
+  const formConfig = data?.form || {
+    nameLabel: "Full Name *",
+    namePlaceholder: "Enter your full name",
+    emailLabel: "Email Address *",
+    emailPlaceholder: "info@xyz.com",
+    phoneLabel: "Phone Number",
+    phonePlaceholder: "+1 00000 00000",
+    intentLabel: "I am interested in",
+    intentOptions: [
+      "Buying a Luxury Property",
+      "Selling / Listing an Estate",
+      "Property Valuation & Advisory",
+      "General Inquiry",
+    ],
+    messageLabel: "Your Message / Requirements *",
+    messagePlaceholder: "Tell us about your requirements, preferred locations, budget, or any questions...",
+    submitButtonText: "Send Message →",
+    successTitle: "Inquiry Dispatched",
+    successMessage: "A Senior Client Partner will reach out via your preferred secure protocol within four hours.",
+  };
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -43,7 +47,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-[#F7F4EE]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Office & Advisory Info */}
+          
           <div className="lg:col-span-5 space-y-8">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal tracking-tight">
@@ -54,9 +58,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </p>
             </div>
 
-            {/* Direct Channels */}
+            
             <div className="space-y-6 pt-4 border-t border-[#E5DFD3]">
-              {channels.map((channel: ChannelItem) => (
+              {channels.map((channel: ContactInfoItem) => (
                 <div key={channel.id} className="flex items-start gap-4">
                   <span className="font-serif text-xl text-[#B8945A] font-light">{channel.id}</span>
                   <div>
@@ -72,7 +76,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             </div>
           </div>
 
-          {/* Right Column: Luxury Form Container */}
+          
           <div className="lg:col-span-7 bg-[#F7F4EE] border border-[#E5DFD3] p-8 sm:p-10 md:p-12 shadow-[0_12px_40px_rgba(23,23,23,0.06)]">
             {isSubmitted ? (
               <div className="py-16 text-center space-y-4">

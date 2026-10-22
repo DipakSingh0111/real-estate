@@ -2,21 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import defaultData from "@/data/properties.json";
-import { NavLink, CtaButton } from "@/types/estate";
+import type { SectionProps, LinkItem } from "@/types/realestate.types";
 
-export interface NavbarProps {
-  navLinks?: NavLink[];
-  ctaButton?: CtaButton;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({
-  navLinks = defaultData.company.navLinks,
-  ctaButton = defaultData.company.ctaButton,
-}) => {
+export const Navbar: React.FC<SectionProps.Header> = ({ data }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  const logoSrc = data?.logo?.src || "/images/Logo.png";
+  const navLinks: LinkItem[] = data?.menu || [];
+  const ctaButton = data?.cta ? { text: data.cta.label, href: data.cta.href } : { text: "Contact Us", href: "/contact" };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,26 +29,26 @@ export const Navbar: React.FC<NavbarProps> = ({
       }`}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Luxury Rounded Floating Pill Dock */}
+        
         <div className="relative rounded-full bg-[#171717]/95 border border-[#B8945A]/30 px-6 sm:px-8 py-2.5 sm:py-3 shadow-[0_16px_50px_rgba(0,0,0,0.6)] flex items-center justify-between transition-all duration-300">
-          {/* Subtle Golden Inner Reflection Line */}
+          
           <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#B8945A]/50 to-transparent pointer-events-none" />
 
-          {/* Brand Identity */}
+          
           <div className="flex items-center justify-start">
             <a
               href="/"
               className="inline-flex items-center gap-3.5 group cursor-pointer"
             >
               <img
-                src={(defaultData as any).company?.logo || "/images/Logo.png"}
+                src={logoSrc}
                 alt="Aura Estates Logo"
                 className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
               />
             </a>
           </div>
 
-          {/* Desktop Navigation Links */}
+          
           <nav className="hidden md:flex items-center gap-7 lg:gap-9">
             {navLinks.map((link) => {
               const isActive =
@@ -61,9 +56,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 (link.href === "/contact" && pathname === "/contact") ||
                 (link.href !== "/" && pathname === link.href);
 
+              const label = link.label || link.name;
               return (
                 <a
-                  key={link.name}
+                  key={label}
                   href={link.href}
                   className={`group relative py-1.5 px-2 text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 flex items-center ${
                     isActive
@@ -72,10 +68,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }`}
                 >
                   <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-0.5">
-                    {link.name}
+                    {label}
                   </span>
 
-                  {/* Animated Gold Underline Bar */}
+                  
                   <span
                     className={`absolute bottom-0 left-2 right-2 h-[2px] bg-gradient-to-r from-[#B8945A] to-[#E5DFD3] transition-all duration-300 ease-out ${
                       isActive
@@ -88,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Right Gold CTA Button & Mobile Toggle */}
+          
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center">
               <a
@@ -112,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </a>
             </div>
 
-            {/* Mobile Menu Hamburger Toggle */}
+            
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
@@ -144,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#171717] border-b border-[#262626] px-6 py-6 shadow-2xl animate-fadeIn">
           <nav className="flex flex-col space-y-3">
@@ -154,9 +150,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 (link.href === "/contact" && pathname === "/contact") ||
                 (link.href !== "/" && pathname === link.href);
 
+              const label = link.label || link.name;
               return (
                 <a
-                  key={link.name}
+                  key={label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`group flex items-center justify-between text-sm uppercase tracking-[0.2em] py-3.5 px-3 font-semibold transition-all duration-300 rounded-sm ${
@@ -165,7 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : "text-white/80 hover:text-white hover:bg-white/5 hover:translate-x-1"
                   }`}
                 >
-                  <span>{link.name}</span>
+                  <span>{label}</span>
                   <span className={`text-xs transition-transform duration-300 ${isActive ? "text-[#B8945A]" : "text-white/30 group-hover:text-[#B8945A] group-hover:translate-x-1"}`}>
                     →
                   </span>

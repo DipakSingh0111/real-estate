@@ -1,17 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { PropertyListing } from "@/types/estate";
+import type { SectionProps } from "@/types/realestate.types";
 
-interface PropertyCardProps {
-  property: PropertyListing;
-}
-
-export const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
+export const PropertyCard: React.FC<SectionProps.PropertyCard> = ({ property }) => {
   const propertyUrl = `/properties/${encodeURIComponent(property.title)}`;
 
   return (
     <div className="group bg-white overflow-hidden border border-[#E5DFD3] hover:border-[#B8945A]/60 transition-all duration-500 flex flex-col">
-      {/* Property Image Container */}
+      
       <Link href={propertyUrl} className="block relative aspect-[16/11] overflow-hidden bg-[#171717]">
         <img
           src={property.image}
@@ -27,7 +23,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
         )}
       </Link>
 
-      {/* Card Info */}
+      
       <div className="p-6 flex flex-col flex-1 justify-between gap-5 bg-[#F7F4EE]/40">
         <div>
           <div className="flex items-baseline justify-between gap-3 mb-2">
@@ -41,7 +37,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             </span>
           </div>
 
-          {/* Location note */}
+          
           <p className="text-sm text-[#737373] mt-2 flex items-center gap-2 font-normal">
             <svg className="w-4 h-4 text-[#B8945A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -50,13 +46,13 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             <span>{property.location}</span>
           </p>
 
-          {/* Features line */}
+          
           <p className="text-xs sm:text-[13px] text-[#737373] mt-3 line-clamp-1 font-normal tracking-wide">
             {property.features.join(" • ")}
           </p>
         </div>
 
-        {/* View Details Button */}
+        
         <Link
           href={propertyUrl}
           className="w-full py-3.5 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#171717] bg-transparent hover:bg-[#B8945A] hover:text-[#171717] border border-[#171717]/25 hover:border-[#B8945A] transition-all duration-300 text-center block"

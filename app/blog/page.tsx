@@ -3,28 +3,44 @@ import Image from "next/image";
 import Link from "next/link";
 import { BreadcrumbHeader } from "@/components/ui/BreadcrumbHeader";
 import defaultData from "@/data/properties.json";
+import type { BlogPostItem } from "@/types/realestate.types";
+import { getEstateSections } from "@/lib/estate";
 
-import { BlogPost } from "@/types/estate";
-
-export const blogPosts: BlogPost[] = ((defaultData as any).blogPosts || []) as BlogPost[];
+function getBlogPosts(): BlogPostItem[] {
+  const sections = getEstateSections();
+  return (
+    (sections.BlogNews?.variants?.AuraEstatesBlogNews1?.list as BlogPostItem[]) ||
+    (((defaultData as any).blogPosts || []) as BlogPostItem[])
+  );
+}
 
 export default function BlogPage() {
+  const sections = getEstateSections();
+  const blogNewsVariant = sections.BlogNews?.variants?.AuraEstatesBlogNews1;
+  const blogPosts = (blogNewsVariant?.list as BlogPostItem[]) || getBlogPosts();
+  const blogConfig = blogNewsVariant?.blogConfig;
+  const blogDetails = blogNewsVariant?.blogDetails;
+
+  const headerBadge = blogDetails?.badge || "Editorial Intelligence";
+  const headerTitle = blogDetails?.title || "Latest";
+  const headerHighlight = blogDetails?.titleHighlight || "Articles";
+  const breadcrumbLabel = blogDetails?.breadcrumbLabel || "Blog";
+  const latestHeading = blogConfig?.latestArticlesHeading || "Latest Blog & Articles";
+  const readArticleText = blogConfig?.readArticleText || "Read Article";
+
   return (
     <main className="min-h-screen bg-[#F7F4EE] text-[#171717]">
-      {/* Breadcrumb Header */}
       <BreadcrumbHeader
-        badge="Editorial Intelligence"
-        title="Latest"
-        titleHighlight="Articles"
-        breadcrumbs={[{ label: "Blog", active: true }]}
+        badge={headerBadge}
+        title={headerTitle}
+        titleHighlight={headerHighlight}
+        breadcrumbs={[{ label: breadcrumbLabel, active: true }]}
       />
 
-      {/* Main Blog Articles Grid */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 sm:py-16">
-        {/* Title */}
         <div className="mb-12 pb-6 border-b border-[#E5DFD3]">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#171717] tracking-tight">
-            Latest Blog & Articles
+            {latestHeading}
           </h2>
         </div>
 
@@ -61,18 +77,18 @@ export default function BlogPage() {
                     <span>{post.readTime}</span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-serif text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors duration-200 mb-3">
+                  <h3 className="text-lg sm:text-xl font-serif text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors duration-200 mb-2.5 line-clamp-2">
                     {post.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#737373] font-light leading-relaxed line-clamp-3">
+                  <p className="text-xs sm:text-[13px] text-[#737373] font-light leading-relaxed line-clamp-2">
                     {post.excerpt}
                   </p>
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-[#E5DFD3] flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#171717] group-hover:text-[#B8945A] transition-colors">
-                    Read Article
+                    {readArticleText}
                   </span>
                   <svg
                     className="w-4 h-4 text-[#B8945A] transform group-hover:translate-x-1 transition-transform"

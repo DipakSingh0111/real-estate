@@ -1,32 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
-import { PropertyListing } from "@/types/estate";
+import type { SectionProps } from "@/types/realestate.types";
 import { PropertyCard } from "@/components/ui/PropertyCard";
 
-interface ListingsGridWithPaginationProps {
-  listings: PropertyListing[];
-  itemsPerPage?: number;
-  initialCity?: string;
-  availableCities?: { name: string; slug: string }[];
-}
-
-export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProps> = ({
+export const ListingsGridWithPagination: React.FC<SectionProps.ListingsGrid> = ({
   listings,
   itemsPerPage = 6,
   initialCity = "all",
   availableCities = [],
+  config,
 }) => {
   const [selectedCity, setSelectedCity] = useState<string>(initialCity);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Sync selectedCity if initialCity changes
   React.useEffect(() => {
     setSelectedCity(initialCity || "all");
     setCurrentPage(1);
   }, [initialCity]);
 
-  // Filter listings by selected city
   const filteredListings = React.useMemo(() => {
     if (!selectedCity || selectedCity.toLowerCase() === "all") {
       return listings;
@@ -52,7 +44,6 @@ export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProp
   const handleCityChange = (slug: string) => {
     setSelectedCity(slug);
     setCurrentPage(1);
-    // Update browser URL without hard refresh
     const url = new URL(window.location.href);
     if (slug === "all") {
       url.searchParams.delete("city");
@@ -67,19 +58,28 @@ export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProp
     window.scrollTo({ top: 380, behavior: "smooth" });
   };
 
+  const selectedBadge = config?.selectedBadge || "City Selected Portfolio";
+  const allBadge = config?.allBadge || "Complete Registry";
+  const defaultTitle = config?.defaultTitle || "All Available Residences";
+  const cityTitlePrefix = config?.cityTitlePrefix || "Curated Luxury Residences in";
+  const residencesInPrefix = config?.residencesInPrefix || "Residences in";
+  const emptyMessage = config?.emptyMessage || "No residences currently available for this city";
+  const showAllButtonText = config?.showAllButtonText || "Show All Cities";
+  const prevButtonText = config?.prevButtonText || "← Prev";
+  const nextButtonText = config?.nextButtonText || "Next →";
+
   const getCityDisplayName = () => {
-    if (!selectedCity || selectedCity === "all") return "All Available Residences";
+    if (!selectedCity || selectedCity === "all") return defaultTitle;
     const found = availableCities.find((c) => c.slug === selectedCity || c.name.toLowerCase() === selectedCity.toLowerCase());
-    return found ? `Curated Luxury Residences in ${found.name}` : `Residences in ${selectedCity.toUpperCase()}`;
+    return found ? `${cityTitlePrefix} ${found.name}` : `${residencesInPrefix} ${selectedCity.toUpperCase()}`;
   };
 
   return (
     <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 sm:py-16">
-      {/* Top Heading */}
       <div className="pb-8 mb-12 border-b border-[#E5DFD3]">
         <div>
           <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[#B8945A] block mb-2">
-            {selectedCity !== "all" ? "City Selected Portfolio" : "Complete Registry"}
+            {selectedCity !== "all" ? selectedBadge : allBadge}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal tracking-tight">
             {getCityDisplayName()}
@@ -87,7 +87,6 @@ export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProp
         </div>
       </div>
 
-      {/* Grid of Property Cards */}
       {currentListings.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentListings.map((item) => (
@@ -98,21 +97,19 @@ export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProp
         </div>
       ) : (
         <div className="text-center py-20 bg-white/40 border border-[#E5DFD3]">
-          <p className="font-serif text-2xl text-[#171717] mb-3">No residences currently available for this city</p>
+          <p className="font-serif text-2xl text-[#171717] mb-3">{emptyMessage}</p>
           <button
             type="button"
             onClick={() => handleCityChange("all")}
-            className="mt-4 px-6 py-3 bg-[#B8945A] text-[#171717] text-xs font-semibold uppercase tracking-[0.2em]"
+            className="mt-4 px-6 py-3 bg-[#B8945A] text-[#171717] text-xs font-semibold uppercase tracking-[0.2em] cursor-pointer"
           >
-            Show All Cities
+            {showAllButtonText}
           </button>
         </div>
       )}
 
-      {/* Pagination Controls */}
       {totalPages > 1 && (
         <div className="mt-16 flex items-center justify-center gap-2">
-          {/* Previous Page Button */}
           <button
             type="button"
             disabled={currentPage === 1}
@@ -123,10 +120,9 @@ export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProp
                 : "border-[#E5DFD3] bg-[#F7F4EE] text-[#171717] hover:border-[#B8945A] hover:text-[#B8945A]"
             }`}
           >
-            ← Prev
+            {prevButtonText}
           </button>
 
-          {/* Numbered Page Buttons */}
           <div className="flex items-center gap-2">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
@@ -144,7 +140,6 @@ export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProp
             ))}
           </div>
 
-          {/* Next Page Button */}
           <button
             type="button"
             disabled={currentPage === totalPages}
@@ -155,7 +150,7 @@ export const ListingsGridWithPagination: React.FC<ListingsGridWithPaginationProp
                 : "border-[#E5DFD3] bg-[#F7F4EE] text-[#171717] hover:border-[#B8945A] hover:text-[#B8945A]"
             }`}
           >
-            Next →
+            {nextButtonText}
           </button>
         </div>
       )}

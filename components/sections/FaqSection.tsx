@@ -1,25 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import defaultData from "@/data/properties.json";
+import type { SectionProps, FaqQuestionItem } from "@/types/realestate.types";
 import { Reveal } from "@/components/animations/Reveal";
 
-interface FaqItem {
-  id: string;
-  category: string;
-  question: string;
-  answer: string;
-}
+export const FaqSection: React.FC<SectionProps.Faq> = ({ data }) => {
+  const title = data?.heading?.main || "Frequently Asked Questions";
+  const faqs = data?.list || [];
 
-interface FaqSectionProps {
-  title?: string;
-  faqs?: FaqItem[];
-}
-
-export const FaqSection: React.FC<FaqSectionProps> = ({
-  title = (defaultData as any).faqConfig?.title || "Frequently Asked Questions",
-  faqs = ((defaultData as any).faqs || []) as FaqItem[],
-}) => {
   const [openId, setOpenId] = useState<string | null>("faq-1");
 
   const toggleFaq = (id: string) => {
@@ -29,85 +17,46 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
   return (
     <section id="faq" className="relative bg-[#F7F4EE] py-16 sm:py-20 border-t border-[#E5DFD3]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Header */}
+        
         <Reveal className="mb-12 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171717] font-normal tracking-tight whitespace-nowrap">
             {title}
           </h2>
         </Reveal>
 
-        {/* FAQ Accordion */}
+        
         <Reveal yOffset={40} delay={0.15}>
-          <div className="divide-y divide-[#E5DFD3] border-y border-[#E5DFD3]">
-          {faqs.map((faq: FaqItem, index: number) => {
-            const isOpen = openId === faq.id;
-            const itemNumber = String(index + 1).padStart(2, "0");
-
-            return (
-              <div
-                key={faq.id}
-                className={`transition-colors duration-300 ${
-                  isOpen ? "bg-[#F7F4EE]" : "hover:bg-[#F2EEE5]/40"
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggleFaq(faq.id)}
-                  aria-expanded={isOpen}
-                  className="w-full text-left py-7 sm:py-8 flex items-start justify-between gap-6 cursor-pointer focus:outline-none"
-                >
-                  <div className="flex items-start gap-5 sm:gap-8">
+          <div className="border-t border-[#E5DFD3] divide-y divide-[#E5DFD3]">
+            {faqs.map((faq: FaqQuestionItem) => {
+              const isOpen = openId === faq.id;
+              return (
+                <div key={faq.id} className="py-5 sm:py-6 group">
+                  <button
+                    onClick={() => toggleFaq(faq.id)}
+                    className="w-full flex items-center justify-between text-left cursor-pointer transition-colors duration-200"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-serif text-lg sm:text-xl lg:text-2xl text-[#171717] group-hover:text-[#B8945A] transition-colors pr-6 font-normal">
+                      {faq.question}
+                    </span>
                     <span
-                      className={`text-xs font-mono tracking-widest mt-1 transition-colors ${
-                        isOpen ? "text-[#B8945A] font-semibold" : "text-[#737373]"
+                      className={`text-xl sm:text-2xl text-[#B8945A] font-light transition-transform duration-300 shrink-0 ${
+                        isOpen ? "rotate-45" : ""
                       }`}
                     >
-                      {itemNumber}
+                      +
                     </span>
-                    <div>
-                      <span className="block text-[10px] uppercase tracking-[0.2em] text-[#B8945A] mb-1 font-semibold">
-                        {faq.category}
-                      </span>
-                      <h3
-                        className={`text-lg sm:text-xl font-serif leading-snug transition-colors ${
-                          isOpen ? "text-[#171717]" : "text-[#171717]/80 hover:text-[#171717]"
-                        }`}
-                      >
-                        {faq.question}
-                      </h3>
-                    </div>
-                  </div>
+                  </button>
 
-                  <div
-                    className={`w-8 h-8 rounded-full border shrink-0 flex items-center justify-center transition-all duration-300 ${
-                      isOpen
-                        ? "border-[#B8945A] bg-[#B8945A] text-[#F7F4EE] rotate-45"
-                        : "border-[#E5DFD3] text-[#171717] hover:border-[#B8945A]"
-                    }`}
-                  >
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                    </svg>
-                  </div>
-                </button>
-
-                <div
-                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <div className="pb-8 pt-0 pl-11 sm:pl-16 pr-4 sm:pr-12">
-                      <p className="text-sm sm:text-base text-[#737373] leading-relaxed font-light">
-                        {faq.answer}
-                      </p>
+                  {isOpen && (
+                    <div className="pt-4 pr-12 text-sm sm:text-base text-[#737373] font-light leading-relaxed animate-fadeIn">
+                      <p>{faq.answer}</p>
                     </div>
-                  </div>
+                  )}
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
         </Reveal>
       </div>
     </section>
