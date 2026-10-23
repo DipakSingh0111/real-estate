@@ -263,6 +263,8 @@
                 },
                 "detailsTitle": "Property Details",
                 "featuresTitle": "Features",
+                "amenitiesTitle": "Amenities & Facilities",
+                "nearbyTitle": "Nearby & Neighborhood Connectivity",
                 "featuresList": [
                   "Air Conditioning",
                   "Swimming Pool",
@@ -283,8 +285,8 @@
                   "/images/real-estate-02.jpg"
                 ],
                 "tourForm": {
-                  "title": "Schedule a Tour",
-                  "subtitle": "Connect with our advisor to book an in-person or virtual walkthrough.",
+                  "title": " Enquiry",
+                  "subtitle": "Connect with our real estate advisor for pricing, floor plans, and acquisition details.",
                   "successTitle": "Request Dispatched",
                   "successMessage": "Our luxury property consultant will reach out shortly.",
                   "nameLabel": "Full Name *",
@@ -359,6 +361,63 @@
                         "Funicular Beach Lift",
                         "Underground 4-Car Garage",
                         "Backup Power Grid"
+                      ]
+                    }
+                  ],
+                  "nearbyLocations": [
+                    {
+                      "category": "Transit & Connectivity",
+                      "items": [
+                        {
+                          "name": "Salerno Costa d'Amalfi Airport",
+                          "distance": "32 km",
+                          "type": "International Aviation"
+                        },
+                        {
+                          "name": "Amalfi Marina & Helipad Terminal",
+                          "distance": "1.8 km",
+                          "type": "Marine & Air Transit"
+                        },
+                        {
+                          "name": "Positano Coastal Ferry Dock",
+                          "distance": "14 km",
+                          "type": "Express Ferry"
+                        }
+                      ]
+                    },
+                    {
+                      "category": "Leisure & Lifestyle",
+                      "items": [
+                        {
+                          "name": "Michelin Star Ristorante La Sponda",
+                          "distance": "3.5 km",
+                          "type": "Fine Dining"
+                        },
+                        {
+                          "name": "Santa Caterina Beach Club",
+                          "distance": "900 m",
+                          "type": "Private Seaside Club"
+                        },
+                        {
+                          "name": "Piazza del Duomo Heritage Square",
+                          "distance": "2.2 km",
+                          "type": "Cultural Center"
+                        }
+                      ]
+                    },
+                    {
+                      "category": "Healthcare & Wellness",
+                      "items": [
+                        {
+                          "name": "Castiglione International Hospital",
+                          "distance": "4.5 km",
+                          "type": "Medical Facility"
+                        },
+                        {
+                          "name": "Monastero Santa Rosa Spa",
+                          "distance": "6.0 km",
+                          "type": "Luxury Wellness"
+                        }
                       ]
                     }
                   ],
@@ -442,6 +501,63 @@
                       ]
                     }
                   ],
+                  "nearbyLocations": [
+                    {
+                      "category": "Transit & Connectivity",
+                      "items": [
+                        {
+                          "name": "Scottsdale Executive Airport (SDL)",
+                          "distance": "8.5 miles",
+                          "type": "Private Jet FBO"
+                        },
+                        {
+                          "name": "Phoenix Sky Harbor International",
+                          "distance": "22 miles",
+                          "type": "International Airport"
+                        },
+                        {
+                          "name": "Loop 101 Pima Freeway",
+                          "distance": "5.2 miles",
+                          "type": "Express Corridor"
+                        }
+                      ]
+                    },
+                    {
+                      "category": "Golf & Recreation",
+                      "items": [
+                        {
+                          "name": "Troon North Golf Club",
+                          "distance": "2.4 miles",
+                          "type": "Championship Golf"
+                        },
+                        {
+                          "name": "McDowell Mountain Regional Park",
+                          "distance": "4.1 miles",
+                          "type": "Hiking & Equestrian"
+                        },
+                        {
+                          "name": "Scottsdale Quarter & Kierland",
+                          "distance": "9.0 miles",
+                          "type": "Luxury Retail & Dining"
+                        }
+                      ]
+                    },
+                    {
+                      "category": "Healthcare & Essentials",
+                      "items": [
+                        {
+                          "name": "Mayo Clinic Hospital Phoenix",
+                          "distance": "11 miles",
+                          "type": "World-Class Hospital"
+                        },
+                        {
+                          "name": "HonorHealth Scottsdale Thompson Peak",
+                          "distance": "6.8 miles",
+                          "type": "Emergency Care"
+                        }
+                      ]
+                    }
+                  ],
                   "floorPlan": {
                     "bedrooms": "5 Guest & Family En-suites",
                     "bathrooms": "7 Spa Baths",
@@ -519,6 +635,63 @@
                         "Turntable Showroom Garage",
                         "Commercial Kitchen Prep Area",
                         "Perimeter Perimeter Radar"
+                      ]
+                    }
+                  ],
+                  "nearbyLocations": [
+                    {
+                      "category": "Transit & Marine",
+                      "items": [
+                        {
+                          "name": "La Môle – Saint-Tropez Airport",
+                          "distance": "16 km",
+                          "type": "Private Aviation"
+                        },
+                        {
+                          "name": "Port de Saint-Tropez Marina",
+                          "distance": "2.1 km",
+                          "type": "Superyacht Anchorage"
+                        },
+                        {
+                          "name": "Nice Côte d'Azur Airport (NCE)",
+                          "distance": "105 km (20 min by Heli)",
+                          "type": "International Hub"
+                        }
+                      ]
+                    },
+                    {
+                      "category": "Beach Clubs & Gastronomy",
+                      "items": [
+                        {
+                          "name": "Club 55 Pampelonne Beach",
+                          "distance": "5.5 km",
+                          "type": "Iconic Beach Club"
+                        },
+                        {
+                          "name": "La Vague d'Or (3 Michelin Stars)",
+                          "distance": "1.2 km",
+                          "type": "Haute Cuisine"
+                        },
+                        {
+                          "name": "Place des Lices Square",
+                          "distance": "2.4 km",
+                          "type": "Historic Town Center"
+                        }
+                      ]
+                    },
+                    {
+                      "category": "Wellness & Health",
+                      "items": [
+                        {
+                          "name": "Pôle de Santé du Golfe de Saint-Tropez",
+                          "distance": "7.5 km",
+                          "type": "Medical Center"
+                        },
+                        {
+                          "name": "Spa Cheval Blanc St-Tropez",
+                          "distance": "1.4 km",
+                          "type": "Guerlain Spa"
+                        }
                       ]
                     }
                   ],
@@ -1398,7 +1571,7 @@
                   "avatar": "/images/team_02.avif",
                   "rating": 5,
                   "propertyPurchased": "Private Villa Estate, Golf Links",
-                  "quote": "The legal diligence and concierge support were unparalleled. From private helicopter site tours to title verification, everything felt smooth and completely stress-free."
+                  "quote": "The legal diligence and concierge support were unparalleled. From private aerial site inspections to title verification, everything felt smooth and completely stress-free."
                 },
                 {
                   "id": "3",
@@ -1939,10 +2112,6 @@
                 {
                   "label": "Properties",
                   "href": "/listings"
-                },
-                {
-                  "label": "Services",
-                  "href": "/services"
                 },
                 {
                   "label": "Faq's",

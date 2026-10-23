@@ -56,7 +56,7 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 bg-[#171717]/90 backdrop-blur-sm px-3.5 py-1.5 border border-white/10">
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B8945A]">
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-white">
                       {featuredBadge}
                     </span>
                   </div>
@@ -66,10 +66,6 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
                   <div>
                     <div className="flex items-center gap-2 text-[11px] text-[#737373] tracking-wider uppercase font-medium mb-3">
                       <span>{featuredPost.category}</span>
-                      <span className="w-1 h-1 rounded-full bg-[#B8945A]" />
-                      <span>{featuredPost.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-[#B8945A]" />
-                      <span>{featuredPost.readTime}</span>
                     </div>
 
                     <h3 className="font-serif text-2xl sm:text-3xl text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors mb-3">
@@ -113,7 +109,7 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                       <div className="absolute top-3 left-3 bg-[#171717]/90 backdrop-blur-sm px-2.5 py-1 border border-white/10">
-                        <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-[#B8945A]">
+                        <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-white">
                           {badgeLabel}
                         </span>
                       </div>
@@ -121,14 +117,9 @@ export const BlogSection: React.FC<SectionProps.Blog> = ({ data, limit = 3 }) =>
 
                     <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
                       <div>
-                        <h4 className="font-serif text-lg sm:text-xl text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors mb-2">
+                        <h4 className="font-serif text-lg sm:text-xl text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors mb-3">
                           {post.title}
                         </h4>
-                        <div className="flex items-center gap-2 text-[10px] text-[#737373] tracking-wider mb-4">
-                          <span>{post.date}</span>
-                          <span className="w-1 h-1 rounded-full bg-[#B8945A]" />
-                          <span>{post.readTime}</span>
-                        </div>
                       </div>
 
                       <div className="pt-3.5 border-t border-[#E5DFD3] flex items-center justify-between mt-auto">

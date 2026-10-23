@@ -103,6 +103,14 @@ export interface PropertyListingItem {
     category: string;
     items: string[];
   }[];
+  nearbyLocations?: {
+    category: string;
+    items: {
+      name: string;
+      distance: string;
+      type?: string;
+    }[];
+  }[];
   floorPlan?: {
     bedrooms: string;
     bathrooms: string;
@@ -148,6 +156,8 @@ export interface PropertyDetailsConfig {
   detailsTitle: string;
   featuresTitle: string;
   featuresList: string[];
+  amenitiesTitle?: string;
+  nearbyTitle?: string;
   fallbackImages: string[];
   tourForm: {
     title: string;

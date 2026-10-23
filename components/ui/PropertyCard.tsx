@@ -17,7 +17,7 @@ export const PropertyCard: React.FC<SectionProps.PropertyCard> = ({ property }) 
         />
 
         {property.tag && (
-          <span className="absolute top-4 left-4 px-3 py-1 bg-[#171717]/90 text-[#B8945A] text-[10px] font-semibold uppercase tracking-[0.2em] border border-[#B8945A]/40 backdrop-blur-xs">
+          <span className="absolute top-4 left-4 px-3 py-1 bg-[#171717]/90 text-white text-[10px] font-semibold uppercase tracking-[0.2em] border border-white/20 backdrop-blur-xs">
             {property.tag}
           </span>
         )}

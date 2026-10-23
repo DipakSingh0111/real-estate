@@ -40,8 +40,8 @@ export const AboutSection: React.FC<SectionProps.About> = ({ data, showStrip = t
                   alt={primaryCard?.imageAlt || primaryCard?.title || "Aura Estates"}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-[#F7F4EE]">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-[#F7F4EE] z-10">
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.25em] text-[#B8945A] font-semibold block mb-1">
                       {primaryCard?.tag}
@@ -74,8 +74,8 @@ export const AboutSection: React.FC<SectionProps.About> = ({ data, showStrip = t
                   alt={secondaryCard?.imageAlt || secondaryCard?.title || "Architectural details"}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 text-[#F7F4EE]">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-[#F7F4EE] z-10">
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[#B8945A] font-semibold block mb-1">
                     {secondaryCard?.tag}
                   </span>

@@ -4,6 +4,26 @@ import React, { useState } from "react";
 import Link from "next/link";
 import type { SectionProps } from "@/types/realestate.types";
 import { BreadcrumbHeader } from "@/components/ui/BreadcrumbHeader";
+import {
+  TbAirConditioning,
+  TbSwimming,
+  TbShieldCheck,
+  TbCar,
+  TbWifi,
+  TbHome,
+  TbFlame,
+  TbSailboat,
+  TbDeviceTv,
+} from "react-icons/tb";
+import {
+  LuTrees,
+  LuCookingPot,
+  LuSparkles,
+  LuPlane,
+  LuHospital,
+  LuBuilding2,
+  LuDumbbell,
+} from "react-icons/lu";
 
 export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
   property,
@@ -51,57 +71,45 @@ export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
     "High-Speed Internet",
   ];
 
-  const getFeatureIcon = (idx: number) => {
-    switch (idx % 8) {
-      case 0:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        );
-      case 1:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-          </svg>
-        );
-      case 2:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918" />
-          </svg>
-        );
-      case 3:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-          </svg>
-        );
-      case 4:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.25V4.5A2.25 2.25 0 0012 2.25H6.75A2.25 2.25 0 004.5 4.5v12" />
-          </svg>
-        );
-      case 5:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-          </svg>
-        );
-      case 6:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-          </svg>
-        );
-      default:
-        return (
-          <svg className="w-5 h-5 text-[#0f2e5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.75">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
-          </svg>
-        );
+  const getFeatureIcon = (text: string) => {
+    const t = text.toLowerCase();
+    if (t.includes("air") || t.includes("conditioning") || t.includes("ac") || t.includes("climate")) {
+      return <TbAirConditioning className="w-5 h-5 text-[#0f2e5c]" />;
     }
+    if (t.includes("pool") || t.includes("swim")) {
+      return <TbSwimming className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("gym") || t.includes("fitness") || t.includes("yoga")) {
+      return <LuDumbbell className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("cinema") || t.includes("theater") || t.includes("media") || t.includes("tv")) {
+      return <TbDeviceTv className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("spa") || t.includes("sauna") || t.includes("wellness")) {
+      return <LuSparkles className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("fireplace") || t.includes("fire")) {
+      return <TbFlame className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("garden") || t.includes("park") || t.includes("tree")) {
+      return <LuTrees className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("security") || t.includes("cctv") || t.includes("safe") || t.includes("biometric") || t.includes("gated")) {
+      return <TbShieldCheck className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("parking") || t.includes("garage") || t.includes("car")) {
+      return <TbCar className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("kitchen") || t.includes("cook") || t.includes("dining")) {
+      return <LuCookingPot className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("balcony") || t.includes("terrace") || t.includes("deck") || t.includes("patio")) {
+      return <TbHome className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    if (t.includes("internet") || t.includes("wifi") || t.includes("high-speed")) {
+      return <TbWifi className="w-5 h-5 text-[#0f2e5c]" />;
+    }
+    return <LuSparkles className="w-5 h-5 text-[#0f2e5c]" />;
   };
 
   const labels = config?.overviewLabels || {
@@ -115,8 +123,8 @@ export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
   };
 
   const tourForm = config?.tourForm || {
-    title: "Schedule a Tour",
-    subtitle: "Connect with our advisor to book an in-person or virtual walkthrough.",
+    title: "Property Enquiry",
+    subtitle: "Connect with our real estate advisor for pricing, floor plans, and acquisition details.",
     successTitle: "Request Dispatched",
     successMessage: "Our luxury property consultant will reach out shortly.",
     nameLabel: "Full Name *",
@@ -126,7 +134,7 @@ export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
     phoneLabel: "Phone Number *",
     phonePlaceholder: "+1 00000 00000",
     messageLabel: "Your Message",
-    submitButtonText: "Request Viewing Tour →",
+    submitButtonText: "Request Property Details →",
   };
 
   return (
@@ -294,13 +302,101 @@ export const PropertyDetailsClient: React.FC<SectionProps.PropertyDetails> = ({
                       className="flex items-center gap-4 bg-slate-50/70 hover:bg-slate-100/70 transition-colors p-4 rounded-xl border border-slate-100"
                     >
                       <div className="w-10 h-10 rounded-full bg-white shadow-xs flex items-center justify-center shrink-0 border border-slate-200/60">
-                        {getFeatureIcon(idx)}
+                        {getFeatureIcon(featLabel)}
                       </div>
                       <span className="font-semibold text-slate-800 text-sm sm:text-base">
                         {featLabel}
                       </span>
                     </div>
                   ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Amenities Section - Compact */}
+            <div>
+              <div className="mb-3">
+                <h2 className="text-xl font-bold text-[#0a192f] tracking-tight">
+                  {config?.amenitiesTitle || "Amenities"}
+                </h2>
+                <div className="w-8 h-0.5 bg-[#0f2e5c] rounded-full mt-1.5" />
+              </div>
+
+              <div className="bg-white rounded-xl border border-slate-200/90 p-5 sm:p-6 shadow-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+                  {(
+                    property.amenities?.flatMap((g) => g.items).slice(0, 6) || [
+                      "Infinity Pool",
+                      "Private Spa",
+                      "Smart Automation",
+                      "24/7 Security",
+                      "Covered Parking",
+                      "Fitness Center"
+                    ]
+                  ).map((item, iIdx) => (
+                    <div
+                      key={iIdx}
+                      className="flex items-center gap-3 text-sm text-slate-700 bg-slate-50/80 hover:bg-slate-100/80 transition-colors py-3 px-3.5 rounded-xl border border-slate-100"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-white border border-slate-200/80 flex items-center justify-center shrink-0 shadow-2xs">
+                        {getFeatureIcon(item)}
+                      </div>
+                      <span className="font-semibold text-slate-800 text-[13px] truncate">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Nearby Section - Compact */}
+            <div>
+              <div className="mb-3">
+                <h2 className="text-xl font-bold text-[#0a192f] tracking-tight">
+                  {config?.nearbyTitle || "Nearby"}
+                </h2>
+                <div className="w-8 h-0.5 bg-[#0f2e5c] rounded-full mt-1.5" />
+              </div>
+
+              <div className="bg-white rounded-xl border border-slate-200/90 p-5 sm:p-6 shadow-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {(
+                    property.nearbyLocations?.flatMap((g) => g.items).slice(0, 4) || [
+                      { name: "International Airport", distance: "25 mins" },
+                      { name: "Express Highway", distance: "5 mins" },
+                      { name: "Shopping Galleria", distance: "8 mins" },
+                      { name: "Super-Specialty Hospital", distance: "10 mins" }
+                    ]
+                  ).map((loc, itemIdx) => {
+                    const locName = loc.name.toLowerCase();
+                    const LocIcon = locName.includes("airport") || locName.includes("flight")
+                      ? LuPlane
+                      : locName.includes("hospital") || locName.includes("clinic") || locName.includes("medical")
+                      ? LuHospital
+                      : locName.includes("mall") || locName.includes("shopping") || locName.includes("market")
+                      ? LuBuilding2
+                      : locName.includes("marina") || locName.includes("ferry") || locName.includes("boat") || locName.includes("dock")
+                      ? TbSailboat
+                      : locName.includes("restaurant") || locName.includes("ristorante") || locName.includes("dining")
+                      ? LuCookingPot
+                      : TbCar;
+
+                    return (
+                      <div
+                        key={itemIdx}
+                        className="flex items-center justify-between py-2.5 px-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100/70 transition-colors"
+                      >
+                        <div className="flex items-center gap-3 min-w-0 pr-2">
+                          <div className="w-8 h-8 rounded-lg bg-white border border-slate-200/80 flex items-center justify-center shrink-0 shadow-2xs">
+                            <LocIcon className="w-5 h-5 text-[#0f2e5c]" />
+                          </div>
+                          <span className="font-semibold text-slate-800 text-[13px] truncate">{loc.name}</span>
+                        </div>
+                        <span className="shrink-0 font-bold text-[#0f2e5c] bg-white px-2.5 py-1 rounded-md border border-slate-200/80 text-xs">
+                          {loc.distance}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

@@ -64,7 +64,7 @@ export default function BlogPage() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 bg-[#171717]/85 backdrop-blur-sm px-3 py-1">
-                    <span className="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#B8945A]">
+                    <span className="text-[9px] uppercase tracking-[0.2em] font-semibold text-white">
                       {post.category}
                     </span>
                   </div>
@@ -73,12 +73,6 @@ export default function BlogPage() {
                 {/* Content Body */}
                 <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
                   <div>
-                    <div className="flex items-center gap-3 text-[11px] text-[#737373] tracking-wider mb-3">
-                      <span>{post.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-[#B8945A]" />
-                      <span>{post.readTime}</span>
-                    </div>
-
                     <h3 className="text-lg sm:text-xl font-serif text-[#171717] font-normal leading-snug group-hover:text-[#B8945A] transition-colors duration-200 mb-2.5 line-clamp-2">
                       {post.title}
                     </h3>
